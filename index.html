@@ -1170,7 +1170,7 @@ playAllBtn.addEventListener('click',()=>{
 ════════════════════════════════════════ */
 langToggleBtn.addEventListener('click',()=>{
   isEnglish=!isEnglish;
-  langLabel.textContent=isEnglish?'切換中文':'隱藏中文';
+  langLabel.textContent=isEnglish?'中文意思':'隱藏中文';
   if(synth.speaking)synth.cancel(); filterVoices(); renderSentences(); renderScenarios();
 });
 
