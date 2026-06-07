@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>用英文每日靜心練習</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23f9a8c9'/%3E%3Cstop offset='50%25' stop-color='%23f06090'/%3E%3Cstop offset='100%25' stop-color='%23c04878'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='30' fill='%23fff5f8' stroke='%23f9c8d8' stroke-width='2'/%3E%3Ctext x='32' y='44' font-size='38' text-anchor='middle' font-family='serif' fill='url(%23g)'%3E✿%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* ════════════════════════════════════════
+   ROOT — 完全對齊參考檔案的暖米色系
+════════════════════════════════════════ */
+:root {
+  --bg:       #fcf4e8;
+  --dot-bg:   #eadab0;
+  --card-bg:  #fffefb;
+  --card-border: #e7d8c4;
+  --card-shadow: #ebd5be;
+
+  --pink:     #f08a80;
+  --pink-dk:  #ce685e;
+  --pink-lt:  #fae1dc;
+  --pink-bd:  #f4c8ce;
+
+  --green:    #7dbf8c;
+  --green-dk: #5a9e6e;
+  --green-lt: #e1eedc;
+
+  --blue:     #7aaecc;
+  --blue-dk:  #5080a0;
+  --blue-lt:  #e1ecf5;
+
+  --yellow:   #f5c842;
+  --yellow-lt:#fcf5e5;
+  --yellow-bd:#e9dcbf;
+
+  --peach:    #e9aa9b;
+  --peach-dk: #ce7a65;
+
+  --tan:      #c4a882;
+  --brown:    #7a5840;
+
+  --text:     #5e412f;
+  --text2:    #825e43;
+  --text3:    #a88060;
+  --muted:    #c0a080;
+
+  --shadow:   rgba(139,115,85,0.12);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ════════════════════════════════════════
+   BODY — 暖米色點點背景（完全匹配參考）
+════════════════════════════════════════ */
+body {
+  font-family: 'Fredoka', 'Noto Sans TC', sans-serif;
+  background-color: var(--bg);
+  background-image: radial-gradient(var(--dot-bg) 1.2px, transparent 1.2px);
+  background-size: 28px 28px;
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── 捲軸 ── */
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background: #f4ecda; border-radius: 12px; }
+::-webkit-scrollbar-thumb { background: #d9beab; border-radius: 12px; border: 3px solid #f4ecda; }
+
+/* ════════════════════════════════════════
+   FELT CARD — 乾淨厚邊框（同參考檔案）
+   ✦ 完全不使用任何 SVG filter，文字清晰
+════════════════════════════════════════ */
+.felt-card {
+  background: var(--card-bg);
+  border: 6px solid var(--card-border);
+  border-radius: 36px;
+  padding: 28px 26px;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    inset 0 -8px 0 var(--card-shadow),
+    0 12px 28px -5px var(--shadow),
+    0 8px 12px -6px var(--shadow);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+}
+.felt-card:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    inset 0 -8px 0 var(--card-shadow),
+    0 18px 36px -5px rgba(139,115,85,0.18),
+    0 14px 18px -6px rgba(139,115,85,0.18);
+}
+
+/* ════════════════════════════════════════
+   WRAPPER
+════════════════════════════════════════ */
+.wrapper {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 36px 18px 70px;
+  position: relative;
+  z-index: 10;
+}
+
+/* ════════════════════════════════════════
+   HEADER
+════════════════════════════════════════ */
+header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+header h1 {
+  font-family: 'Fredoka', sans-serif;
+  font-size: clamp(1.9rem, 6vw, 3rem);
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+.flower-grad {
+  background: linear-gradient(135deg, #f9a8c9 0%, #f06090 50%, #c04878 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+  filter: drop-shadow(0 1px 2px rgba(240,96,144,0.25));
+}
+header p {
+  font-size: 0.95rem;
+  color: var(--text3);
+  margin-top: 6px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+/* ════════════════════════════════════════
+   BUTTONS — woolen style（同參考 woolen-btn）
+════════════════════════════════════════ */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.btn {
+  font-family: 'Fredoka', 'Noto Sans TC', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 22px;
+  padding: 10px 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.1s ease;
+  outline: none;
+  letter-spacing: 0.02em;
+  /* woolen 立體感：下邊深色陰影邊 */
+  border-bottom-width: 5px;
+  border-bottom-style: solid;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+.btn:hover { filter: brightness(1.05); transform: translateY(-1px); }
+.btn:active { transform: translateY(3px); border-bottom-width: 2px; }
+
+.btn-mauve  { background: #c06080; color: #fff; border-bottom-color: #8b3a56; }
+.btn-pink   { background: var(--pink); color: #fff; border-bottom-color: var(--pink-dk); }
+.btn-blue   { background: var(--blue); color: #fff; border-bottom-color: var(--blue-dk); }
+.btn-green  { background: var(--green); color: #fff; border-bottom-color: var(--green-dk); }
+.btn-rose   { background: #e07080; color: #fff; border-bottom-color: #b04060; }
+.btn-peach  { background: var(--peach); color: #fff; border-bottom-color: var(--peach-dk); }
+.btn-tan    { background: var(--tan); color: #fff; border-bottom-color: var(--brown); }
+
+/* ════════════════════════════════════════
+   CARD HEADER
+════════════════════════════════════════ */
+.card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 3px dashed #d5b99e;
+}
+.card-title {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ════════════════════════════════════════
+   SELECT
+════════════════════════════════════════ */
+select {
+  background: #fdf8f2;
+  border: 2px solid var(--card-border);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 7px 10px;
+  font-family: 'Fredoka', 'Noto Sans TC', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+}
+
+/* ════════════════════════════════════════
+   SENTENCE ROWS
+════════════════════════════════════════ */
+.sentence-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 10px;
+  border-radius: 14px;
+  margin-bottom: 4px;
+  transition: background 0.2s;
+  border-bottom: 1.5px solid rgba(215,185,158,0.25);
+}
+.sentence-row:last-child { border-bottom: none; }
+.sentence-row:hover { background: rgba(240,218,200,0.3); }
+.sentence-row.playing {
+  background: linear-gradient(90deg, #fae8dc, rgba(240,210,195,0.4));
+  border-left: 4px solid var(--pink-dk);
+  padding-left: 12px;
+  border-bottom-color: transparent;
+}
+
+.sentence-num {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--peach-dk);
+  min-width: 28px;
+  margin-top: 2px;
+}
+.sentence-text { flex: 1; }
+.sentence-main {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.65;
+}
+.sentence-phonetic {
+  font-size: 0.84rem;
+  color: var(--text3);
+  font-style: italic;
+  margin-top: 3px;
+  display: none;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+.sentence-phonetic.visible { display: block; }
+
+/* 中文翻譯（雙語模式時顯示在英文下方） */
+.sentence-zh {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text2);
+  margin-top: 4px;
+  padding-left: 2px;
+  border-left: 3px solid var(--pink);
+  padding-left: 8px;
+  line-height: 1.6;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+/* 情境標題英譯 */
+.scenario-title-en {
+  font-size: 0.82em;
+  font-weight: 400;
+  opacity: 0.72;
+  margin-left: 6px;
+  font-family: 'Fredoka', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+/* ════════════════════════════════════════
+   PLAY BUTTON — 🌸 花朵造型
+════════════════════════════════════════ */
+.play-btn {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+  background: transparent;
+  position: relative;
+  padding: 0;
+}
+.play-btn:hover { transform: scale(1.15) rotate(10deg); }
+.play-btn:active { transform: scale(0.92) rotate(-5deg); }
+
+/* 播放中：花朵持續旋轉 */
+@keyframes flower-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.play-btn.spinning .flower-bg {
+  animation: flower-spin 2s linear infinite;
+  transform-origin: center;
+}
+.play-btn.spinning:hover { transform: scale(1.1); }
+
+/* 花朵背景用 SVG，三角形播放符號疊在上面 */
+.play-btn .flower-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+}
+.play-btn .play-tri {
+  position: relative;
+  z-index: 2;
+  width: 0; height: 0;
+  border-style: solid;
+  border-width: 6px 0 6px 11px;
+  margin-left: 2px;
+}
+.play-btn.green .play-tri { border-color: transparent transparent transparent #5a9e6e; }
+.play-btn.blue  .play-tri { border-color: transparent transparent transparent #c04878; }
+
+/* ════════════════════════════════════════
+   SCENARIO TITLE TAG
+════════════════════════════════════════ */
+.scenario-title {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--brown);
+  background: var(--yellow-lt);
+  display: inline-block;
+  padding: 5px 16px;
+  border-radius: 9999px;
+  margin-bottom: 10px;
+  margin-top: 8px;
+  border: 2px solid var(--yellow-bd);
+  box-shadow: 0 2px 0 rgba(180,140,60,0.18);
+}
+
+/* ════════════════════════════════════════
+   DOT TRACKER
+════════════════════════════════════════ */
+.dot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14px, 1fr));
+  gap: 5px;
+}
+.dot {
+  width: 100%;
+  aspect-ratio: 1;
+  background: #f0d8cc;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+.dot.done {
+  background: var(--pink);
+  box-shadow: 0 1px 4px rgba(200,100,100,0.3);
+}
+.dot.today {
+  border: 2px solid var(--pink-dk);
+  transform: scale(1.25);
+  box-shadow: 0 0 6px rgba(200,80,100,0.35);
+}
+
+/* ════════════════════════════════════════
+   CHECK-IN BUTTON
+════════════════════════════════════════ */
+.checkin-wrap { display: flex; justify-content: center; margin-top: 24px; }
+#checkinBtn {
+  font-family: 'Fredoka', 'Noto Sans TC', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 13px 34px;
+  background: var(--pink);
+  color: #fff;
+  border: none;
+  border-bottom: 6px solid var(--pink-dk);
+  border-radius: 22px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(206,104,94,0.25);
+  transition: all 0.1s ease;
+  display: flex; align-items: center; gap: 8px;
+  letter-spacing: 0.02em;
+}
+#checkinBtn:hover { filter: brightness(1.05); transform: translateY(-1px); }
+#checkinBtn:active { transform: translateY(4px); border-bottom-width: 2px; }
+#checkinBtn.done {
+  background: var(--green);
+  border-bottom-color: var(--green-dk);
+  box-shadow: 0 4px 12px rgba(90,158,110,0.25);
+}
+
+/* ════════════════════════════════════════
+   TRACKER TOP BAR
+════════════════════════════════════════ */
+.tracker-top {
+  display: flex; flex-wrap: wrap;
+  align-items: center; gap: 10px;
+  justify-content: flex-end;
+}
+.tracker-top label { font-weight: 600; font-size: 0.88rem; color: var(--text2); }
+input[type=date] {
+  background: #fdf8f2;
+  border: 2px solid var(--card-border);
+  border-radius: 12px;
+  padding: 6px 10px;
+  font-family: 'Fredoka', 'Noto Sans TC', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text);
+  outline: none;
+  cursor: pointer;
+}
+.streak-badge {
+  background: #fdf8f2;
+  border: 2px solid var(--card-border);
+  border-radius: 9999px;
+  padding: 5px 14px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text2);
+  box-shadow: 0 2px 0 rgba(0,0,0,0.06);
+}
+
+/* ════════════════════════════════════════
+   TOAST
+════════════════════════════════════════ */
+.toast {
+  position: fixed; bottom: 24px; left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: #8b3a56;
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 22px;
+  font-weight: 600; font-size: 0.95rem;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  z-index: 9999; white-space: nowrap;
+  box-shadow: 0 4px 0 rgba(0,0,0,0.18), 0 6px 20px rgba(140,58,86,0.28);
+  font-family: 'Fredoka', 'Noto Sans TC', sans-serif;
+}
+.toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+/* ════════════════════════════════════════
+   DECORATIONS — 乾淨 drop-shadow，不用 displacement
+════════════════════════════════════════ */
+.deco {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1;
+  filter: drop-shadow(1px 2px 4px rgba(160,80,100,0.18));
+  /* ✦ 不加任何 displacement filter，裝飾圖形邊緣清晰 */
+}
+@keyframes float-a {
+  0%,100% { transform: translateY(0) rotate(-4deg); }
+  50%      { transform: translateY(-9px) rotate(4deg); }
+}
+@keyframes float-b {
+  0%,100% { transform: translateY(0) rotate(6deg); }
+  50%      { transform: translateY(-11px) rotate(-4deg); }
+}
+@keyframes float-c {
+  0%,100% { transform: translateY(0) rotate(0deg) scale(1); }
+  50%      { transform: translateY(-7px) rotate(8deg) scale(1.04); }
+}
+.deco.bow    { animation: float-a 5s ease-in-out infinite; }
+.deco.clover { animation: float-b 6.5s ease-in-out infinite; }
+.deco.flower { animation: float-c 7s ease-in-out infinite 1s; }
+.deco.star   { animation: float-a 4.5s ease-in-out infinite 0.5s; }
+
+/* 隱藏內部捲軸 */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style:none; scrollbar-width:none; }
+
+@media (max-width:640px) { .deco { display:none; } .felt-card { padding:20px 14px; } }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════
+  WOOL OVERLAY — 光影質感（同參考檔案，不影響文字）
+════════════════════════════════════ -->
+<svg style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:999;opacity:0.10;mix-blend-mode:overlay;" xmlns="http://www.w3.org/2000/svg">
+  <filter id="felt-noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" result="noise"/>
+    <feDiffuseLighting in="noise" lighting-color="#fff" surfaceScale="2" result="light">
+      <feDistantLight azimuth="45" elevation="60"/>
+    </feDiffuseLighting>
+  </filter>
+  <rect width="100%" height="100%" filter="url(#felt-noise)"/>
+</svg>
+
+<!-- ════════════════════════════════════
+  DECORATIONS
+════════════════════════════════════ -->
+
+<!-- 左上 大蝴蝶結 (深玫瑰) -->
+<div class="deco bow" style="top:22px;left:16px;width:100px;height:88px;opacity:0.82;">
+  <svg viewBox="0 0 110 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M55 44 Q 22 8, 7 22 Q -2 34, 8 44 Q 22 56, 55 44 Z" fill="#D4788E"/>
+    <path d="M55 44 Q 88 8, 103 22 Q 112 34, 102 44 Q 88 56, 55 44 Z" fill="#D4788E"/>
+    <path d="M55 44 Q 26 12, 13 24 Q 4 34, 14 42 Q 28 52, 55 44 Z" fill="#F0A8BC" opacity=".55"/>
+    <path d="M55 44 Q 84 12, 97 24 Q 106 34, 96 42 Q 82 52, 55 44 Z" fill="#F0A8BC" opacity=".55"/>
+    <ellipse cx="55" cy="44" rx="9" ry="8" fill="#8B3A56"/>
+    <ellipse cx="55" cy="44" rx="5" ry="4" fill="#D4788E"/>
+    <path d="M51 52 Q 43 66, 39 74 Q 44 77, 48 72 Q 51 64, 55 54 Z" fill="#D4788E"/>
+    <path d="M59 52 Q 67 66, 71 74 Q 66 77, 62 72 Q 59 64, 55 54 Z" fill="#D4788E"/>
+    <!-- 縫線點 -->
+    <circle cx="55" cy="38" r="1.5" fill="rgba(255,255,255,0.5)"/>
+    <circle cx="55" cy="50" r="1.5" fill="rgba(255,255,255,0.5)"/>
+  </svg>
+</div>
+
+<!-- 右上 小蝴蝶結 (淡粉) -->
+<div class="deco bow" style="top:18px;right:20px;width:64px;height:56px;opacity:0.65;animation-delay:1s;">
+  <svg viewBox="0 0 110 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M55 44 Q 22 8, 7 22 Q -2 34, 8 44 Q 22 56, 55 44 Z" fill="#F0C8D8"/>
+    <path d="M55 44 Q 88 8, 103 22 Q 112 34, 102 44 Q 88 56, 55 44 Z" fill="#F0C8D8"/>
+    <ellipse cx="55" cy="44" rx="9" ry="8" fill="#E8A0B0"/>
+    <path d="M51 52 Q 43 64, 40 72 Q 44 75, 48 70 Q 51 62, 55 54 Z" fill="#F0C8D8"/>
+    <path d="M59 52 Q 67 64, 70 72 Q 66 75, 62 70 Q 59 62, 55 54 Z" fill="#F0C8D8"/>
+  </svg>
+</div>
+
+<!-- 右中 藍色蝴蝶結 -->
+<div class="deco bow" style="top:40%;right:14px;width:72px;height:64px;opacity:0.6;animation-delay:2.5s;">
+  <svg viewBox="0 0 110 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M55 44 Q 22 8, 7 22 Q -2 34, 8 44 Q 22 56, 55 44 Z" fill="#90B8D8"/>
+    <path d="M55 44 Q 88 8, 103 22 Q 112 34, 102 44 Q 88 56, 55 44 Z" fill="#90B8D8"/>
+    <path d="M55 44 Q 28 14, 15 24 Q 6 33, 16 42 Q 30 52, 55 44 Z" fill="#C0D8F0" opacity=".5"/>
+    <path d="M55 44 Q 82 14, 95 24 Q 104 33, 94 42 Q 80 52, 55 44 Z" fill="#C0D8F0" opacity=".5"/>
+    <ellipse cx="55" cy="44" rx="9" ry="8" fill="#5C8EB8"/>
+    <path d="M51 52 Q 43 65, 40 73 Q 44 76, 48 71 Q 51 63, 55 54 Z" fill="#90B8D8"/>
+    <path d="M59 52 Q 67 65, 70 73 Q 66 76, 62 71 Q 59 63, 55 54 Z" fill="#90B8D8"/>
+  </svg>
+</div>
+
+<!-- 左下 橘色蝴蝶結 -->
+<div class="deco bow" style="bottom:90px;left:12px;width:80px;height:70px;opacity:0.65;animation-delay:0.8s;">
+  <svg viewBox="0 0 110 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M55 44 Q 22 8, 7 22 Q -2 34, 8 44 Q 22 56, 55 44 Z" fill="#EDB88A"/>
+    <path d="M55 44 Q 88 8, 103 22 Q 112 34, 102 44 Q 88 56, 55 44 Z" fill="#EDB88A"/>
+    <path d="M55 44 Q 28 14, 15 24 Q 6 33, 16 42 Q 30 52, 55 44 Z" fill="#FAD8B0" opacity=".5"/>
+    <path d="M55 44 Q 82 14, 95 24 Q 104 33, 94 42 Q 80 52, 55 44 Z" fill="#FAD8B0" opacity=".5"/>
+    <ellipse cx="55" cy="44" rx="9" ry="8" fill="#D4904E"/>
+    <path d="M51 52 Q 43 65, 40 73 Q 44 76, 48 71 Q 51 63, 55 54 Z" fill="#EDB88A"/>
+    <path d="M59 52 Q 67 65, 70 73 Q 66 76, 62 71 Q 59 63, 55 54 Z" fill="#EDB88A"/>
+  </svg>
+</div>
+
+<!-- 右下 小粉蝴蝶結 -->
+<div class="deco bow" style="bottom:60px;right:16px;width:56px;height:50px;opacity:0.55;animation-delay:3s;">
+  <svg viewBox="0 0 110 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M55 44 Q 22 8, 7 22 Q -2 34, 8 44 Q 22 56, 55 44 Z" fill="#E8A0B0"/>
+    <path d="M55 44 Q 88 8, 103 22 Q 112 34, 102 44 Q 88 56, 55 44 Z" fill="#E8A0B0"/>
+    <ellipse cx="55" cy="44" rx="8" ry="7" fill="#C05070"/>
+    <path d="M51 52 Q 44 63, 41 70 Q 45 73, 49 68 Q 52 61, 55 53 Z" fill="#E8A0B0"/>
+    <path d="M59 52 Q 66 63, 69 70 Q 65 73, 61 68 Q 58 61, 55 53 Z" fill="#E8A0B0"/>
+  </svg>
+</div>
+
+<!-- 右上 幸運草 (綠) -->
+<div class="deco clover" style="top:105px;right:20px;width:68px;height:68px;opacity:0.68;">
+  <svg viewBox="0 0 100 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M50 48 C 26 24, 10 44, 30 58 C 16 70, 36 84, 50 66 C 64 84, 84 70, 70 58 C 90 44, 74 24, 50 48 Z" fill="#8EC49A"/>
+    <path d="M50 48 C 28 26, 14 46, 32 58 C 18 70, 38 82, 50 66 Z" fill="#B8E0C0" opacity=".5"/>
+    <path d="M50 48 C 72 26, 86 46, 68 58 C 82 70, 62 82, 50 66 Z" fill="#B8E0C0" opacity=".5"/>
+    <circle cx="50" cy="54" r="7" fill="#5E9E70"/>
+    <circle cx="50" cy="54" r="4" fill="#8EC49A"/>
+    <rect x="47.5" y="60" width="5" height="24" rx="2.5" fill="#5E9E70"/>
+    <path d="M50 74 Q 42 79, 40 86 Q 45 89, 50 84 Z" fill="#8EC49A"/>
+    <!-- 葉脈 -->
+    <line x1="50" y1="48" x2="30" y2="58" stroke="rgba(255,255,255,0.4)" stroke-width="1.2"/>
+    <line x1="50" y1="48" x2="70" y2="58" stroke="rgba(255,255,255,0.4)" stroke-width="1.2"/>
+    <line x1="50" y1="48" x2="50" y2="66" stroke="rgba(255,255,255,0.4)" stroke-width="1.2"/>
+  </svg>
+</div>
+
+<!-- 左中 幸運草 (淡綠) -->
+<div class="deco clover" style="top:38%;left:10px;width:56px;height:56px;opacity:0.52;animation-delay:1.5s;">
+  <svg viewBox="0 0 100 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M50 48 C 26 24, 10 44, 30 58 C 16 70, 36 84, 50 66 C 64 84, 84 70, 70 58 C 90 44, 74 24, 50 48 Z" fill="#B8E0C0"/>
+    <circle cx="50" cy="54" r="6" fill="#8EC49A"/>
+    <rect x="47.5" y="60" width="5" height="20" rx="2.5" fill="#8EC49A"/>
+  </svg>
+</div>
+
+<!-- 右中偏下 幸運草 (深綠) -->
+<div class="deco clover" style="top:60%;right:12px;width:50px;height:50px;opacity:0.48;animation-delay:3.2s;">
+  <svg viewBox="0 0 100 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M50 48 C 26 24, 10 44, 30 58 C 16 70, 36 84, 50 66 C 64 84, 84 70, 70 58 C 90 44, 74 24, 50 48 Z" fill="#5E9E70"/>
+    <circle cx="50" cy="54" r="6" fill="#3E7E50"/>
+    <rect x="47.5" y="60" width="5" height="18" rx="2.5" fill="#3E7E50"/>
+  </svg>
+</div>
+
+<!-- 左下角 幸運草 (粉綠) -->
+<div class="deco clover" style="bottom:170px;left:18px;width:76px;height:76px;opacity:0.6;animation-delay:2s;">
+  <svg viewBox="0 0 100 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M50 48 C 26 24, 10 44, 30 58 C 16 70, 36 84, 50 66 C 64 84, 84 70, 70 58 C 90 44, 74 24, 50 48 Z" fill="#C8E8D0"/>
+    <path d="M50 48 C 28 26, 14 46, 32 58 C 18 70, 38 82, 50 66 Z" fill="#8EC49A" opacity=".6"/>
+    <path d="M50 48 C 72 26, 86 46, 68 58 C 82 70, 62 82, 50 66 Z" fill="#8EC49A" opacity=".6"/>
+    <circle cx="50" cy="54" r="7" fill="#8EC49A"/>
+    <rect x="47.5" y="60" width="5" height="22" rx="2.5" fill="#8EC49A"/>
+    <path d="M50 74 Q 42 79, 40 86 Q 45 89, 50 84 Z" fill="#C8E8D0"/>
+  </svg>
+</div>
+
+<!-- 小花 × 3 (裝飾點綴) -->
+<div class="deco flower" style="top:20%;left:8px;width:38px;height:38px;opacity:0.42;animation-delay:0.5s;">
+  <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="50" cy="24" r="20" fill="#F5D0DA"/>
+    <circle cx="76" cy="50" r="20" fill="#F5D0DA"/>
+    <circle cx="50" cy="76" r="20" fill="#F5D0DA"/>
+    <circle cx="24" cy="50" r="20" fill="#F5D0DA"/>
+    <circle cx="50" cy="50" r="18" fill="#EDB88A"/>
+    <circle cx="50" cy="50" r="10" fill="#F0D890"/>
+  </svg>
+</div>
+<div class="deco flower" style="top:22%;right:86px;width:34px;height:34px;opacity:0.38;animation-delay:2s;">
+  <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="50" cy="24" r="20" fill="#90B8D8"/>
+    <circle cx="76" cy="50" r="20" fill="#90B8D8"/>
+    <circle cx="50" cy="76" r="20" fill="#90B8D8"/>
+    <circle cx="24" cy="50" r="20" fill="#90B8D8"/>
+    <circle cx="50" cy="50" r="18" fill="#5C8EB8"/>
+    <circle cx="50" cy="50" r="10" fill="#F0D890"/>
+  </svg>
+</div>
+<div class="deco flower" style="bottom:220px;right:20px;width:44px;height:44px;opacity:0.45;animation-delay:1s;">
+  <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="50" cy="24" r="20" fill="#F5D0DA"/>
+    <circle cx="76" cy="50" r="20" fill="#F5D0DA"/>
+    <circle cx="50" cy="76" r="20" fill="#F5D0DA"/>
+    <circle cx="24" cy="50" r="20" fill="#F5D0DA"/>
+    <circle cx="50" cy="50" r="18" fill="#E8A0B0"/>
+    <circle cx="50" cy="50" r="10" fill="#fff"/>
+  </svg>
+</div>
+
+<!-- ════════════════════════════════════
+  MAIN CONTENT
+════════════════════════════════════ -->
+<div class="wrapper">
+
+  <header>
+    <h1><span class="flower-grad">✿</span> 用英文・每日靜心練習 <span class="flower-grad">✿</span></h1>
+    <p>Breathe slow. Speak gentle. You are enough. 🎀 <span style="font-size:0.82em;opacity:0.7;font-style:normal;letter-spacing:0.06em;">— crafted by 頵嫻 Annie</span></p>
+  </header>
+
+  <!-- 控制列 -->
+  <div class="controls">
+    <button id="langToggleBtn" class="btn btn-mauve">
+      <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg>
+      <span id="langLabel">切換中文</span>
+    </button>
+    <button id="phoneticToggleBtn" class="btn btn-blue">
+      <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+      <span id="phoneticLabel">顯示音標</span>
+    </button>
+    <button id="regenerateBtn" class="btn btn-pink">
+      <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+      換一批
+    </button>
+    <button id="playAllBtn" class="btn btn-rose">
+      <svg width="15" height="15" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/></svg>
+      <span>播放全文</span>
+    </button>
+  </div>
+
+  <!-- 今日靜心語錄 -->
+  <div class="felt-card">
+    <div class="card-header">
+      <div class="card-title">
+        <svg width="22" height="22" fill="#e05060" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>
+        🌸 今日靜心英文練習
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+        <label style="font-weight:700;font-size:0.82rem;color:var(--text2);">發音:</label>
+        <select id="voiceSelect"><option>載入語音中...</option></select>
+      </div>
+    </div>
+    <div id="sentenceList"></div>
+    <div class="checkin-wrap">
+      <button id="checkinBtn">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        完成今日練習
+      </button>
+    </div>
+  </div>
+
+  <!-- 八大情境對話 -->
+  <div class="felt-card">
+    <div class="card-header">
+      <div class="card-title">
+        <svg width="22" height="22" fill="#e05060" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd"/></svg>
+        🎀 八大情境對話
+      </div>
+      <button id="regenScenarioBtn" class="btn btn-blue" style="font-size:0.82rem;padding:8px 16px;">
+        <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+        換一批情境
+      </button>
+    </div>
+    <div id="scenarioList"></div>
+  </div>
+
+  <!-- 365天打卡 -->
+  <div class="felt-card">
+    <div class="card-header">
+      <div class="card-title">
+        <svg width="22" height="22" fill="#e05060" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/></svg>
+        🍀 365 天練習紀錄
+      </div>
+      <div class="tracker-top">
+        <label for="startDatePicker">起始日:</label>
+        <input type="date" id="startDatePicker">
+        <button id="resetTrackerBtn" class="btn btn-tan" style="font-size:0.78rem;padding:7px 14px;">清除重來</button>
+        <span id="streakCount" class="streak-badge">已打卡: 0 天</span>
+      </div>
+    </div>
+    <div id="checkinContainer" class="dot-grid no-scrollbar" style="max-height:180px;overflow-y:auto;padding:4px;"></div>
+  </div>
+
+</div>
+
+<div id="toast" class="toast"><span id="toastMsg"></span></div>
+
+<script>
+/* ════════════════════════════════════════
+   DATA
+════════════════════════════════════════ */
+const mindfulnessPool = [
+  {en:"Take a deep breath in, and let it go.",zh:"深呼吸，然後吐氣放鬆。",ipa:"/teɪk ə diːp brɛθ ɪn, ænd lɛt ɪt ɡoʊ/",pinyin:"shēn hū xī, rán hòu tǔ qì fàng sōng."},
+  {en:"Right now, you don't have to do anything.",zh:"現在這一刻，你什麼都不必做。",ipa:"/raɪt naʊ, ju doʊnt hæv tu du ˈɛniˌθɪŋ/",pinyin:"xiàn zài zhè yī kè, nǐ shén me dōu bù bì zuò."},
+  {en:"You don't have to worry about tomorrow.",zh:"你不必為了明天而擔憂。",ipa:"/ju doʊnt hæv tu ˈwɜri əˈbaʊt təˈmɑˌroʊ/",pinyin:"nǐ bù bì wèi le míng tiān ér dān yōu."},
+  {en:"Look around you. Feel the air on your skin.",zh:"看看四周。感受空氣拂過你的皮膚。",ipa:"/lʊk əˈraʊnd ju. fiːl ði ɛr ɑn jʊr skɪn/",pinyin:"kàn kàn sì zhōu. gǎn shòu kōng qì fú guò nǐ de pí fū."},
+  {en:"Listen to the quiet in this room.",zh:"聆聽這個房間裡的寧靜。",ipa:"/ˈlɪsən tu ðə ˈkwaɪət ɪn ðɪs ruːm/",pinyin:"líng tīng zhè ge fáng jiān lǐ de níng jìng."},
+  {en:"The world is always rushing, but you can stop.",zh:"世界總是很匆忙，但你可以停下來。",ipa:"/ðə wɜrld ɪz ˈɔlˌweɪz ˈrʌʃɪŋ, bʌt ju kæn stɑp/",pinyin:"shì jiè zǒng shì hěn cōng máng, dàn nǐ kě yǐ tíng xià lái."},
+  {en:"Your worth is not in your to-do list.",zh:"你的價值不在於待辦清單。",ipa:"/jʊr wɜrθ ɪz nɑt ɪn jʊr tu-du lɪst/",pinyin:"nǐ de jià zhí bù zài yú dài bàn qīng dān."},
+  {en:"You are enough just by being here.",zh:"光是存在於此，你就已經足夠了。",ipa:"/ju ɑr ɪˈnʌf dʒʌst baɪ ˈbiɪŋ hɪr/",pinyin:"guāng shì cún zài yú cǐ, nǐ jiù yǐ jīng zú gòu le."},
+  {en:"Let your shoulders drop. Let your mind be still.",zh:"放下肩膀。讓你的心安靜下來。",ipa:"/lɛt jʊr ˈʃoʊldərz drɑp. lɛt jʊr maɪnd bi stɪl/",pinyin:"fàng xià jiān bǎng. ràng nǐ de xīn ān jìng xià lái."},
+  {en:"Everything is okay. You are safe.",zh:"一切都很好。你很安全。",ipa:"/ˈɛvriˌθɪŋ ɪz ˌoʊˈkeɪ. ju ɑr seɪf/",pinyin:"yī qiè dōu hěn hǎo. nǐ hěn ān quán."},
+  {en:"And you are doing great.",zh:"而且你做得非常棒。",ipa:"/ænd ju ɑr ˈduɪŋ ɡreɪt/",pinyin:"ér qiě nǐ zuò de fēi cháng bàng."},
+  {en:"Stay in this moment for just a little longer.",zh:"在這個當下，再多停留一會兒吧。",ipa:"/steɪ ɪn ðɪs ˈmoʊmənt fɔr dʒʌst ə ˈlɪtəl ˈlɔŋɡər/",pinyin:"zài zhè ge dāng xià, zài duō tíng liú yī huǐ ér ba."},
+  {en:"Be gentle with yourself today.",zh:"今天，對自己溫柔一點。",ipa:"/bi ˈdʒɛntəl wɪð jʊərˈsɛlf təˈdeɪ/",pinyin:"jīn tiān, duì zì jǐ wēn róu yī diǎn."},
+  {en:"You have survived all of your hard days.",zh:"你已經熬過了所有艱難的日子。",ipa:"/ju hæv sərˈvaɪvd ɔl ʌv jʊr hɑrd deɪz/",pinyin:"nǐ yǐ jīng áo guò le suǒ yǒu jiān nán de rì zi."},
+  {en:"It is okay to rest when you are tired.",zh:"累的時候，休息是沒關係的。",ipa:"/ɪt ɪz ˌoʊˈkeɪ tu rɛst wɛn ju ɑr ˈtaɪərd/",pinyin:"lèi de shí hòu, xiū xí shì méi guān xì de."},
+  {en:"Let go of what you cannot control.",zh:"放下那些你無法控制的事物。",ipa:"/lɛt ɡoʊ ʌv wʌt ju ˈkænɑt kənˈtroʊl/",pinyin:"fàng xià nà xiē nǐ wú fǎ kòng zhì de shì wù."},
+  {en:"Your feelings are valid and important.",zh:"你的感受是合理且重要的。",ipa:"/jʊr ˈfilɪŋz ɑr ˈvæləd ænd ɪmˈpɔrtənt/",pinyin:"nǐ de gǎn shòu shì hé lǐ qiě zhòng yào de."},
+  {en:"Breathe in peace, breathe out stress.",zh:"吸進平靜，呼出壓力。",ipa:"/brið ɪn pis, brið aʊt strɛs/",pinyin:"xī jìn píng jìng, hū chū yā lì."},
+  {en:"Today is a new beginning.",zh:"今天是一個新的開始。",ipa:"/təˈdeɪ ɪz ə nu bɪˈɡɪnɪŋ/",pinyin:"jīn tiān shì yī gè xīn de kāi shǐ."},
+  {en:"You are surrounded by love.",zh:"你被愛所包圍著。",ipa:"/ju ɑr səˈraʊndəd baɪ lʌv/",pinyin:"nǐ bèi ài suǒ bāo wéi zhe."},
+  {en:"Close your eyes and just breathe for a moment.",zh:"閉上眼睛，先靜靜地呼吸一下。",ipa:"/kloʊz jʊr aɪz ænd dʒʌst brið fɔr ə ˈmoʊmənt/",pinyin:"bì shàng yǎn jīng, xiān jìng jìng de hū xī yī xià."},
+  {en:"You don't need to be perfect to be worthy.",zh:"你不需要完美才有價值。",ipa:"/ju doʊnt nid tu bi ˈpɜrfɪkt tu bi ˈwɜrði/",pinyin:"nǐ bù xū yào wán měi cái yǒu jià zhí."},
+  {en:"Small steps still move you forward.",zh:"小步伐仍然讓你向前邁進。",ipa:"/smɔl stɛps stɪl muv ju ˈfɔrwərd/",pinyin:"xiǎo bù fá réng rán ràng nǐ xiàng qián mài jìn."},
+  {en:"It's okay to not have all the answers.",zh:"沒有所有答案，是沒關係的。",ipa:"/ɪts ˌoʊˈkeɪ tu nɑt hæv ɔl ðə ˈænsərz/",pinyin:"méi yǒu suǒ yǒu dá àn, shì méi guān xì de."},
+  {en:"You have the strength to get through this.",zh:"你有足夠的力量度過這一切。",ipa:"/ju hæv ðə strɛŋθ tu ɡɛt θru ðɪs/",pinyin:"nǐ yǒu zú gòu de lì liàng dù guò zhè yī qiē."},
+  {en:"Slow down. You don't have to rush.",zh:"放慢腳步，你不必那麼趕。",ipa:"/sloʊ daʊn. ju doʊnt hæv tu rʌʃ/",pinyin:"fàng màn jiǎo bù, nǐ bù bì nà me gǎn."},
+  {en:"You are allowed to take up space in this world.",zh:"你有權利在這個世界中佔據自己的位置。",ipa:"/ju ɑr əˈlaʊd tu teɪk ʌp speɪs ɪn ðɪs wɜrld/",pinyin:"nǐ yǒu quán lì zài zhè ge shì jiè zhōng zhàn jù zì jǐ de wèi zhì."},
+  {en:"This moment is yours. Treasure it.",zh:"這個時刻是你的，好好珍惜它。",ipa:"/ðɪs ˈmoʊmənt ɪz jʊrz. ˈtrɛʒər ɪt/",pinyin:"zhè ge shí kè shì nǐ de, hǎo hǎo zhēn xī tā."},
+  {en:"Let kindness begin with yourself.",zh:"讓善意從自己開始。",ipa:"/lɛt ˈkaɪndnɪs bɪˈɡɪn wɪð jʊərˈsɛlf/",pinyin:"ràng shàn yì cóng zì jǐ kāi shǐ."},
+  {en:"One breath at a time. That's all you need.",zh:"一次一個呼吸，這就是你所需要的一切。",ipa:"/wʌn brɛθ æt ə taɪm. ðæts ɔl ju nid/",pinyin:"yī cì yī gè hū xī, zhè jiù shì nǐ suǒ xū yào de yī qiē."},
+  {en:"You matter more than you know.",zh:"你的重要性遠超過你所知道的。",ipa:"/ju ˈmætər mɔr ðæn ju noʊ/",pinyin:"nǐ de zhòng yào xìng yuǎn chāo guò nǐ suǒ zhī dào de."},
+  {en:"Release the tension you've been holding.",zh:"放鬆你一直緊繃著的壓力。",ipa:"/rɪˈlis ðə ˈtɛnʃən juv bɪn ˈhoʊldɪŋ/",pinyin:"fàng sōng nǐ yī zhí jǐn bēng zhe de yā lì."},
+  {en:"Every ending is also a new beginning.",zh:"每一個結束，也是一個新的開始。",ipa:"/ˈɛvri ˈɛndɪŋ ɪz ˈɔlsoʊ ə nu bɪˈɡɪnɪŋ/",pinyin:"měi yī gè jié shù, yě shì yī gè xīn de kāi shǐ."},
+  {en:"You are not alone in how you feel.",zh:"在你的感受上，你並不孤單。",ipa:"/ju ɑr nɑt əˈloʊn ɪn haʊ ju fil/",pinyin:"zài nǐ de gǎn shòu shàng, nǐ bìng bù gū dān."},
+  {en:"Soften your gaze. Soften your heart.",zh:"柔和你的眼神，柔和你的心。",ipa:"/ˈsɔfən jʊr ɡeɪz. ˈsɔfən jʊr hɑrt/",pinyin:"róu hé nǐ de yǎn shén, róu hé nǐ de xīn."}
+];
+
+// ── 八大情境完整語料庫（每個情境多句可輪換）──
+const scenariosPool = [
+  {title:"1. 自我介紹", titleEn:"Self-Introduction", sentences:[
+    {en:"Hello, my name is Alex, and it's a pleasure to meet you.",zh:"你好，我的名字是 Alex，很高興認識你。",ipa:"/həˈloʊ, maɪ neɪm ɪz ˈælɪks, ænd ɪts ə ˈplɛʒər tu mit ju/",pinyin:"nǐ hǎo, wǒ de míng zì shì Alex, hěn gāo xìng rèn shì nǐ."},
+    {en:"I come from Taiwan, and I love exploring new ideas.",zh:"我來自台灣，而且我喜歡探索新想法。",ipa:"/aɪ kʌm frʌm taɪˈwɑn, ænd aɪ lʌv ɪkˈsplɔrɪŋ nu aɪˈdiəz/",pinyin:"wǒ lái zì táng wān, ér qiě wǒ xǐ huān tàn suǒ xīn xiǎng fǎ."},
+    {en:"I'm 35 years old and currently working in the tech industry.",zh:"我今年 35 歲，目前在科技業工作。",ipa:"/aɪm ˈθɜrti faɪv jɪrz oʊld ænd ˈkɜrəntli ˈwɜrkɪŋ ɪn ðə tɛk ˈɪndəstri/",pinyin:"wǒ jīn nián 35 suì, mù qián zài kē jì yè gōng zuò."},
+    {en:"In my spare time, I enjoy coding and learning new languages.",zh:"空閒時，我喜歡寫程式和學習新語言。",ipa:"/ɪn maɪ spɛr taɪm, aɪ ɪnˈdʒɔɪ ˈkoʊdɪŋ ænd ˈlɜrnɪŋ nu ˈlæŋɡwɪdʒɪz/",pinyin:"kòng xián shí, wǒ xǐ huān xiě chéng shì hé xué xí xīn yǔ yán."},
+    {en:"I'm a lifelong learner who loves a good challenge.",zh:"我是一個熱愛挑戰的終身學習者。",ipa:"/aɪm ə ˈlaɪflɔŋ ˈlɜrnər hu lʌvz ə ɡʊd ˈtʃælɪndʒ/",pinyin:"wǒ shì yī gè rè ài tiǎo zhàn de zhōng shēn xué xí zhě."},
+    {en:"Nice to meet everyone here today.",zh:"很高興今天在這裡認識大家。",ipa:"/naɪs tu mit ˈɛvriˌwʌn hɪr təˈdeɪ/",pinyin:"hěn gāo xìng jīn tiān zài zhè lǐ rèn shì dà jiā."}
+  ]},
+  {title:"2. 為什麼學英文？", titleEn:"Why Learn English?", sentences:[
+    {en:"I am learning English to communicate with people around the world.",zh:"我正在學習英文，以便與世界各地的人溝通。",ipa:"/aɪ æm ˈlɜrnɪŋ ˈɪŋɡlɪʃ tu kəˈmjunɪˌkeɪt wɪð ˈpipəl əˈraʊnd ðə wɜrld/",pinyin:"wǒ zhèng zài xué xí yīng wén, yǐ biàn yǔ shì jiè gè dì de rén gōu tōng."},
+    {en:"English opens up new doors and opportunities for my future.",zh:"英文為我的未來打開了新的大門與機會。",ipa:"/ˈɪŋɡlɪʃ ˈoʊpənz ʌp nu dɔrz ænd ˌɑpərˈtunɪtiz fɔr maɪ ˈfjutʃər/",pinyin:"yīng wén wèi wǒ de wèi lái dǎ kāi le xīn de dà mén yǔ jī huì."},
+    {en:"I want to be able to read technical articles in English fluently.",zh:"我希望能流利地閱讀英文技術文章。",ipa:"/aɪ wɑnt tu bi ˈeɪbəl tu rid ˈtɛknɪkəl ˈɑrtɪkəlz ɪn ˈɪŋɡlɪʃ ˈfluəntli/",pinyin:"wǒ xī wàng néng liú lì de yuè dú yīng wén jì shù wén zhāng."},
+    {en:"Learning English helps me grow both personally and professionally.",zh:"學英文幫助我在個人和職業上都有所成長。",ipa:"/ˈlɜrnɪŋ ˈɪŋɡlɪʃ hɛlps mi ɡroʊ boʊθ ˈpɜrsənəli ænd prəˈfɛʃənəli/",pinyin:"xué yīng wén bāng zhù wǒ zài gè rén hé zhí yè shàng dōu yǒu suǒ chéng zhǎng."},
+    {en:"English is the language of technology and I need it every day.",zh:"英文是科技的語言，我每天都需要用到它。",ipa:"/ˈɪŋɡlɪʃ ɪz ðə ˈlæŋɡwɪdʒ ʌv tɛkˈnɑlədʒi ænd aɪ nid ɪt ˈɛvri deɪ/",pinyin:"yīng wén shì kē jì de yǔ yán, wǒ měi tiān dōu xū yào yòng dào tā."},
+    {en:"I want to travel and connect with people everywhere.",zh:"我想旅行，和世界各地的人建立連結。",ipa:"/aɪ wɑnt tu ˈtrævəl ænd kəˈnɛkt wɪð ˈpipəl ˈɛvriˌwɛr/",pinyin:"wǒ xiǎng lǚ xíng, hé shì jiè gè dì de rén jiàn lì lián jié."}
+  ]},
+  {title:"3. 人際關係", titleEn:"Relationships", sentences:[
+    {en:"Building strong relationships requires time, patience, and good listening.",zh:"建立良好的人際關係需要時間、耐心和良好的傾聽。",ipa:"/ˈbɪldɪŋ strɔŋ rɪˈleɪʃənˌʃɪps rɪˈkwaɪərz taɪm, ˈpeɪʃəns, ænd ɡʊd ˈlɪsənɪŋ/",pinyin:"jiàn lì liáng hǎo de rén jì guān xì xū yào shí jiān, nài xīn hé liáng hǎo de qīng tīng."},
+    {en:"I appreciate friends who support me and help me grow.",zh:"我很感激那些支持我並幫助我成長的朋友。",ipa:"/aɪ əˈpriʃiˌeɪt frɛndz hu səˈpɔrt mi ænd hɛlp mi ɡroʊ/",pinyin:"wǒ hěn gǎn jī nà xiē zhī chí wǒ bìng bāng zhù wǒ chéng zhǎng de péng yǒu."},
+    {en:"Communication is the foundation of every healthy relationship.",zh:"溝通是每段健康關係的基礎。",ipa:"/kəˌmjunɪˈkeɪʃən ɪz ðə faʊnˈdeɪʃən ʌv ˈɛvri ˈhɛlθi rɪˈleɪʃənˌʃɪp/",pinyin:"gōu tōng shì měi duàn jiàn kāng guān xì de jī chǔ."},
+    {en:"Setting healthy boundaries is a sign of self-respect.",zh:"設立健康的界限是自我尊重的表現。",ipa:"/ˈsɛtɪŋ ˈhɛlθi ˈbaʊndəriz ɪz ə saɪn ʌv ˌsɛlfˈrɪspɛkt/",pinyin:"shè lì jiàn kāng de jiè xiàn shì zì wǒ zūn zhòng de biǎo xiàn."},
+    {en:"True friendship grows through honesty and trust.",zh:"真正的友誼在誠實和信任中成長。",ipa:"/tru ˈfrɛndʃɪp ɡroʊz θru ˈɑnɪsti ænd trʌst/",pinyin:"zhēn zhèng de yǒu yì zài chéng shí hé xìn rèn zhōng chéng zhǎng."},
+    {en:"Showing up for others makes all the difference.",zh:"為他人出現，往往能帶來很大的不同。",ipa:"/ˈʃoʊɪŋ ʌp fɔr ˈʌðərz meɪks ɔl ðə ˈdɪfərəns/",pinyin:"wèi tā rén chū xiàn, wǎng wǎng néng dài lái hěn dà de bù tóng."}
+  ]},
+  {title:"4. 旅遊", titleEn:"Travel", sentences:[
+    {en:"Traveling allows me to experience different cultures and perspectives.",zh:"旅行讓我能夠體驗不同的文化和視角。",ipa:"/ˈtrævəlɪŋ əˈlaʊz mi tu ɪkˈspɪriəns ˈdɪfərənt ˈkʌltʃərz ænd pərˈspɛktɪvz/",pinyin:"lǚ xíng ràng wǒ néng gòu tǐ yàn bù tóng de wén huà hé shì jiǎo."},
+    {en:"I can't wait to pack my bags and explore an unknown city.",zh:"我等不及打包行李，去探索一座未知的城市了。",ipa:"/aɪ kænt weɪt tu pæk maɪ bæɡz ænd ɪkˈsplɔr ən ənˈnoʊn ˈsɪti/",pinyin:"wǒ děng bù jí dǎ bāo xíng lǐ, qù tàn suǒ yī zuò wèi zhī de chéng shì le."},
+    {en:"Every trip teaches me something new about the world and myself.",zh:"每一次旅行都讓我對世界和自己有新的認識。",ipa:"/ˈɛvri trɪp ˈtitʃɪz mi ˈsʌmθɪŋ nu əˈbaʊt ðə wɜrld ænd maɪˈsɛlf/",pinyin:"měi yī cì lǚ xíng dōu ràng wǒ duì shì jiè hé zì jǐ yǒu xīn de rèn shí."},
+    {en:"Could you recommend a good local restaurant near here?",zh:"你能推薦附近一家好的當地餐廳嗎？",ipa:"/kʊd ju ˌrɛkəˈmɛnd ə ɡʊd ˈloʊkəl rɛsˈtɔrənt nɪr hɪr/",pinyin:"nǐ néng tuī jiàn fù jìn yī jiā hǎo de dāng dì cān tīng ma?"},
+    {en:"Excuse me, how do I get to the train station from here?",zh:"請問，我要怎麼從這裡去火車站？",ipa:"/ɪkˈskjuz mi, haʊ du aɪ ɡɛt tu ðə treɪn ˈsteɪʃən frʌm hɪr/",pinyin:"qǐng wèn, wǒ yào zěn me cóng zhè lǐ qù huǒ chē zhàn?"},
+    {en:"I'd like to check in, please. I have a reservation under my name.",zh:"我想辦理入住，我有用我的名字預訂。",ipa:"/aɪd laɪk tu tʃɛk ɪn, pliz. aɪ hæv ə ˌrɛzərˈveɪʃən ˈʌndər maɪ neɪm/",pinyin:"wǒ xiǎng bàn lǐ rù zhù, wǒ yǒu yòng wǒ de míng zì yù dìng."}
+  ]},
+  {title:"5. 興趣", titleEn:"Hobbies & Interests", sentences:[
+    {en:"In my free time, I enjoy reading books and listening to music.",zh:"在空閒時間，我喜歡看書和聽音樂。",ipa:"/ɪn maɪ fri taɪm, aɪ ɪnˈdʒɔɪ ˈridɪŋ bʊks ænd ˈlɪsənɪŋ tu ˈmjuzɪk/",pinyin:"zài kòng xián shí jiān, wǒ xǐ huān kàn shū hé tīng yīn yuè."},
+    {en:"Finding a hobby you love is the best way to relieve stress.",zh:"找到一個你熱愛的興趣是紓解壓力的最佳方法。",ipa:"/ˈfaɪndɪŋ ə ˈhɑbi ju lʌv ɪz ðə bɛst weɪ tu rɪˈliv strɛs/",pinyin:"zhǎo dào yī gè nǐ rè ài de xìng qù shì shū jiě yā lì de zuì jiā fāng fǎ."},
+    {en:"I recently got into hiking and now I go every weekend.",zh:"我最近愛上了健行，現在每個週末都去。",ipa:"/aɪ ˈrisəntli ɡɑt ˈɪntu ˈhaɪkɪŋ ænd naʊ aɪ ɡoʊ ˈɛvri ˈwikˌɛnd/",pinyin:"wǒ zuì jìn ài shàng le jiàn xíng, xiàn zài měi gè zhōu mò dōu qù."},
+    {en:"Playing an instrument is one of the most rewarding things I've ever done.",zh:"演奏樂器是我做過最有成就感的事情之一。",ipa:"/ˈpleɪɪŋ ən ˈɪnstrəmənt ɪz wʌn ʌv ðə moʊst rɪˈwɔrdɪŋ θɪŋz aɪv ˈɛvər dʌn/",pinyin:"yǎn zòu yuè qì shì wǒ zuò guò zuì yǒu chéng jiù gǎn de shì qíng zhī yī."},
+    {en:"I love photography. Capturing a moment makes it last forever.",zh:"我熱愛攝影，捕捉一個瞬間讓它永遠留存。",ipa:"/aɪ lʌv fəˈtɑɡrəfi. ˈkæptʃərɪŋ ə ˈmoʊmənt meɪks ɪt læst fərˈɛvər/",pinyin:"wǒ rè ài shè yǐng, bǔ zhuō yī gè shùn jiān ràng tā yǒng yuǎn liú cún."},
+    {en:"Cooking relaxes me and lets me be creative at the same time.",zh:"烹飪讓我放鬆，同時也讓我發揮創意。",ipa:"/ˈkʊkɪŋ rɪˈlæksɪz mi ænd lɛts mi bi kriˈeɪtɪv æt ðə seɪm taɪm/",pinyin:"pēng rèn ràng wǒ fàng sōng, tóng shí yě ràng wǒ fā huī chuàng yì."}
+  ]},
+  {title:"6. 工作", titleEn:"Work & Career", sentences:[
+    {en:"I take pride in my work and always try my best to solve problems.",zh:"我為我的工作感到自豪，並總是盡力解決問題。",ipa:"/aɪ teɪk praɪd ɪn maɪ wɜrk ænd ˈɔlˌweɪz traɪ maɪ bɛst tu sɑlv ˈprɑbləmz/",pinyin:"wǒ wèi wǒ de gōng zuò gǎn dào zì háo, bìng zǒng shì jìn lì jiě jué wèn tí."},
+    {en:"Teamwork is essential for achieving our professional goals.",zh:"團隊合作對於實現我們的職業目標至關重要。",ipa:"/ˈtimˌwɜrk ɪz ɪˈsɛnʃəl fɔr əˈtʃivɪŋ ˈaʊər prəˈfɛʃənəl ɡoʊlz/",pinyin:"tuán duì hé zuò duì yú shí xiàn wǒ men de zhí yè mù biāo zhì guān zhòng yào."},
+    {en:"Could we schedule a meeting to discuss this further?",zh:"我們可以安排一個會議來進一步討論嗎？",ipa:"/kʊd wi ˈskɛdʒul ə ˈmitɪŋ tu dɪˈskʌs ðɪs ˈfɜrðər/",pinyin:"wǒ men kě yǐ ān pái yī gè huì yì lái jìn yī bù tǎo lùn ma?"},
+    {en:"I'd like to follow up on the project status we discussed last week.",zh:"我想跟進一下我們上週討論的專案進度。",ipa:"/aɪd laɪk tu ˈfɑloʊ ʌp ɑn ðə ˈprɑdʒɛkt ˈsteɪtəs wi dɪˈskʌst læst wik/",pinyin:"wǒ xiǎng gēn jìn yī xià wǒ men shàng zhōu tǎo lùn de zhuān àn jìn dù."},
+    {en:"I believe continuous learning is the key to long-term success.",zh:"我相信持續學習是長期成功的關鍵。",ipa:"/aɪ bɪˈliv kənˈtɪnjuəs ˈlɜrnɪŋ ɪz ðə ki tu lɔŋ tɜrm səkˈsɛs/",pinyin:"wǒ xiāng xìn chí xù xué xí shì cháng qī chéng gōng de guān jiàn."},
+    {en:"Please let me know if you have any questions or concerns.",zh:"如有任何疑問或顧慮，請告訴我。",ipa:"/pliz lɛt mi noʊ ɪf ju hæv ˈɛni ˈkwɛstʃənz ɔr kənˈsɜrnz/",pinyin:"rú yǒu rèn hé yí wèn huò gù lǜ, qǐng gào sù wǒ."}
+  ]},
+  {title:"7. 夢想成為頂尖程式語言工程師", titleEn:"Dream: Top Software Engineer", sentences:[
+    {en:"My ultimate dream is to become a top-tier software engineer.",zh:"我最終的夢想是成為一名頂尖的軟體工程師。",ipa:"/maɪ ˈʌltəmət drim ɪz tu bɪˈkʌm ə tɑp-tɪr ˈsɔfˌtwɛr ˈɛndʒəˈnɪr/",pinyin:"wǒ zuì zhōng de mèng xiǎng shì chéng wèi yī míng dǐng jiān de ruǎn tǐ gōng chéng shī."},
+    {en:"Writing clean and efficient code brings me a lot of joy.",zh:"編寫乾淨且高效的程式碼給我帶來很多快樂。",ipa:"/ˈraɪtɪŋ klin ænd ɪˈfɪʃənt koʊd brɪŋz mi ə lɑt ʌv dʒɔɪ/",pinyin:"biān xiě gān jìng qiě gāo xiào de chéng shì mǎ gěi wǒ dài lái hěn duō kuài lè."},
+    {en:"I practice coding every day to sharpen my skills.",zh:"我每天練習程式設計，以磨練我的技能。",ipa:"/aɪ ˈpræktɪs ˈkoʊdɪŋ ˈɛvri deɪ tu ˈʃɑrpən maɪ skɪlz/",pinyin:"wǒ měi tiān liàn xí chéng shì shè jì, yǐ mó liàn wǒ de jì néng."},
+    {en:"I love the feeling of solving a difficult bug.",zh:"我喜歡解決一個難搞 bug 的感覺。",ipa:"/aɪ lʌv ðə ˈfilɪŋ ʌv ˈsɑlvɪŋ ə ˈdɪfɪkəlt bʌɡ/",pinyin:"wǒ xǐ huān jiě jué yī gè nán gǎo bug de gǎn jué."},
+    {en:"Open source contribution is my way of giving back to the community.",zh:"貢獻開源是我回饋社群的方式。",ipa:"/ˈoʊpən sɔrs ˌkɑntrɪˈbjuʃən ɪz maɪ weɪ ʌv ˈɡɪvɪŋ bæk tu ðə kəˈmjunɪti/",pinyin:"gòng xiàn kāi yuán shì wǒ huí kuì shè qún de fāng shì."},
+    {en:"The best engineers never stop being curious.",zh:"最優秀的工程師從不停止保持好奇心。",ipa:"/ðə bɛst ˌɛndʒɪˈnɪrz ˈnɛvər stɑp ˈbiɪŋ ˈkjʊriəs/",pinyin:"zuì yōu xiù de gōng chéng shī cóng bù tíng zhǐ bǎo chí hào qí xīn."}
+  ]},
+  {title:"8. 生活作息", titleEn:"Daily Routine", sentences:[
+    {en:"I start my day with a cup of coffee and a clear plan.",zh:"我以一杯咖啡和清晰的計畫開始我的一天。",ipa:"/aɪ stɑrt maɪ deɪ wɪð ə kʌp ʌv ˈkɑfi ænd ə klɪr plæn/",pinyin:"wǒ yǐ yī bēi kā fēi hé qīng xī de jì huà kāi shǐ wǒ de yī tiān."},
+    {en:"Maintaining a balanced daily routine keeps me healthy and focused.",zh:"保持平衡的日常作息讓我保持健康和專注。",ipa:"/meɪnˈteɪnɪŋ ə ˈbælənst ˈdeɪli ruˈtin kips mi ˈhɛlθi ænd ˈfoʊkəst/",pinyin:"bǎo chí píng héng de rì cháng zuò xí ràng wǒ bǎo chí jiàn kāng hé zhuān zhù."},
+    {en:"I try to go to bed before midnight to get enough sleep.",zh:"我盡量在午夜前就寢，以獲得足夠的睡眠。",ipa:"/aɪ traɪ tu ɡoʊ tu bɛd bɪˈfɔr ˈmɪdˌnaɪt tu ɡɛt ɪˈnʌf slip/",pinyin:"wǒ jǐn liàng zài wǔ yè qián jiù qǐn, yǐ huò dé zú gòu de shuì mián."},
+    {en:"A short walk after lunch helps me stay energized all afternoon.",zh:"午餐後短暫散步幫助我整個下午保持活力。",ipa:"/ə ʃɔrt wɔk ˈæftər lʌntʃ hɛlps mi steɪ ˈɛnərˌdʒaɪzd ɔl ˌæftərˈnun/",pinyin:"wǔ cān hòu duǎn zàn sàn bù bāng zhù wǒ zhěng gè xià wǔ bǎo chí huó lì."},
+    {en:"I use a journal to reflect on my day every evening.",zh:"我每天晚上用日記來反思我的一天。",ipa:"/aɪ juz ə ˈdʒɜrnəl tu rɪˈflɛkt ɑn maɪ deɪ ˈɛvri ˈivnɪŋ/",pinyin:"wǒ měi tiān wǎn shàng yòng rì jì lái fǎn sī wǒ de yī tiān."},
+    {en:"Drinking enough water throughout the day makes a huge difference.",zh:"整天喝足夠的水會帶來很大的改變。",ipa:"/ˈdrɪŋkɪŋ ɪˈnʌf ˈwɔtər θruˈaʊt ðə deɪ meɪks ə hjudʒ ˈdɪfərəns/",pinyin:"zhěng tiān hē zú gòu de shuǐ huì dài lái hěn dà de gǎi biàn."}
+  ]}
+];
+
+/* ════════════════════════════════════════
+   STATE
+════════════════════════════════════════ */
+let isEnglish=true, showPhonetics=false;
+let synth=window.speechSynthesis, voices=[];
+let dailySentences=[], currentlyPlayingIndex=-1;
+let currentlyPlayingScenario=null;
+let seedOffset=0, scenarioSeedOffset=0, isPlayingAll=false;
+
+// 防重複歷史紀錄：記住已出現過的句子 index（跨批次）
+let mindfulnessHistory=[];   // 已用過的 mindfulnessPool index
+let scenarioHistory={};      // {情境index: [已用過的句子 index]}
+
+const $ = id => document.getElementById(id);
+const sentenceListEl    = $('sentenceList');
+const scenarioListEl    = $('scenarioList');
+const langToggleBtn     = $('langToggleBtn');
+const langLabel         = $('langLabel');
+const phoneticToggleBtn = $('phoneticToggleBtn');
+const phoneticLabel     = $('phoneticLabel');
+const regenerateBtn     = $('regenerateBtn');
+const regenScenarioBtn  = $('regenScenarioBtn');
+const playAllBtn        = $('playAllBtn');
+const voiceSelect       = $('voiceSelect');
+const checkinBtn        = $('checkinBtn');
+const checkinContainer  = $('checkinContainer');
+const streakCount       = $('streakCount');
+const startDatePicker   = $('startDatePicker');
+const resetTrackerBtn   = $('resetTrackerBtn');
+const toast             = $('toast');
+const toastMsg          = $('toastMsg');
+
+/* ════════════════════════════════════════
+   HELPERS
+════════════════════════════════════════ */
+function seededRandom(s){const x=Math.sin(s++)*10000;return x-Math.floor(x);}
+const getDayOfYear=()=>{const n=new Date(),s=new Date(n.getFullYear(),0,0);return Math.floor((n-s)/864e5);};
+function getTodayString(){const tz=(new Date()).getTimezoneOffset()*60000;return (new Date(Date.now()-tz)).toISOString().split('T')[0];}
+function getDaysDiff(d1,d2){const a=new Date(d1),b=new Date(d2);a.setHours(0,0,0,0);b.setHours(0,0,0,0);return Math.floor((b-a)/864e5);}
+function showToast(msg){toastMsg.textContent=msg;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),3000);}
+
+/* ════════════════════════════════════════
+   VOICE — 預設美式英語
+════════════════════════════════════════ */
+function populateVoices(){voices=synth.getVoices();filterVoices();}
+if(speechSynthesis.onvoiceschanged!==undefined) speechSynthesis.onvoiceschanged=populateVoices;
+
+function pickDefaultUSVoice(list){
+  // 優先順序: Google US English > 任何 en-US > 任何 en
+  return list.find(v=>v.name.toLowerCase().includes('google')&&v.lang.toLowerCase()==='en-us')
+      || list.find(v=>v.lang.toLowerCase()==='en-us')
+      || list.find(v=>v.lang.toLowerCase().startsWith('en-us'))
+      || list.find(v=>v.lang.toLowerCase().startsWith('en'))
+      || null;
+}
+
+function filterVoices(){
+  voiceSelect.innerHTML='';
+  const prefix = isEnglish ? 'en' : 'zh';
+  let filtered = voices.filter(v=>v.lang.toLowerCase().startsWith(prefix));
+
+  if(isEnglish){
+    // 排序：en-US 排最前
+    filtered.sort((a,b)=>{
+      const aUS = a.lang.toLowerCase().startsWith('en-us') ? 0 : 1;
+      const bUS = b.lang.toLowerCase().startsWith('en-us') ? 0 : 1;
+      if(aUS!==bUS) return aUS-bUS;
+      // en-US 內部：Google 排最前
+      const aG = a.name.toLowerCase().includes('google') ? 0 : 1;
+      const bG = b.name.toLowerCase().includes('google') ? 0 : 1;
+      return aG-bG;
+    });
+  }
+
+  if(!filtered.length){voiceSelect.innerHTML='<option>預設系統發音</option>';return;}
+
+  let defaultVoice = isEnglish ? pickDefaultUSVoice(filtered) : null;
+
+  filtered.forEach(v=>{
+    const o=document.createElement('option');
+    let label = v.name;
+    if(v.name.toLowerCase().includes('google')) label='🌟 '+label;
+    if(v.lang.toLowerCase().startsWith('en-us')) label='🇺🇸 '+label;
+    o.textContent=label;
+    o.value=v.voiceURI;
+    if(defaultVoice && v.voiceURI===defaultVoice.voiceURI) o.selected=true;
+    voiceSelect.appendChild(o);
+  });
+}
+
+function speak(text,cb){
+  if(synth.speaking) synth.cancel();
+  const u=new SpeechSynthesisUtterance(text);
+  u.rate=0.85; u.pitch=1.0;
+  const sel=voices.find(v=>v.voiceURI===voiceSelect.value);
+  if(sel) u.voice=sel;
+  u.onend=cb;
+  synth.speak(u);
+}
+
+/* ════════════════════════════════════════
+   SENTENCES  — 防重複抽換
+════════════════════════════════════════ */
+// 從 pool 中挑 count 句，不和 history 中的 index 重複
+// 若 pool 全部都已出現過，自動清空 history 重新開始
+function pickUnique(pool, history, count, baseSeed) {
+  // 若可用的不夠，清掉歷史讓它循環
+  let available = pool.map((_,i)=>i).filter(i=>!history.includes(i));
+  if(available.length < count) {
+    history.length = 0;
+    available = pool.map((_,i)=>i);
+  }
+
+  const picked = [];
+  let seed = baseSeed;
+  while(picked.length < count && available.length > 0) {
+    const ri = Math.floor(seededRandom(seed++) * available.length);
+    const idx = available[ri];
+    picked.push(pool[idx]);
+    history.push(idx);
+    available.splice(ri, 1);
+  }
+  return picked;
+}
+
+function generateDailySentences(){
+  const seed = new Date().getFullYear()*1000 + getDayOfYear() + seedOffset*37;
+  dailySentences = pickUnique(mindfulnessPool, mindfulnessHistory, 10, seed);
+}
+
+// 情境對話：每個情境從自己的 pool 中各抽 2 句，不重複
+let scenariosData = []; // 當前顯示的情境句子（動態生成）
+
+function generateScenarios(){
+  scenariosData = scenariosPool.map((cat, ci) => {
+    if(!scenarioHistory[ci]) scenarioHistory[ci] = [];
+    const seed = new Date().getFullYear()*10000 + getDayOfYear()*8 + ci*100 + scenarioSeedOffset*13;
+    const picked = pickUnique(cat.sentences, scenarioHistory[ci], 2, seed);
+    return { title: cat.title, titleEn: cat.titleEn, sentences: picked };
+  });
+}
+
+function renderSentences(){
+  sentenceListEl.innerHTML='';
+  dailySentences.forEach((s,i)=>{
+    const isPlaying = i===currentlyPlayingIndex;
+    const row=document.createElement('div');
+    row.className='sentence-row'+(isPlaying?' playing':'');
+    row.id='sentence-'+i;
+    row.innerHTML=`
+      <span class="sentence-num">${i+1}.</span>
+      <div class="sentence-text">
+        <p class="sentence-main">${s.en}</p>
+        ${!isEnglish ? `<p class="sentence-zh">${s.zh}</p>` : ''}
+        <p class="sentence-phonetic${showPhonetics?' visible':''}">${isEnglish?s.ipa:s.pinyin}</p>
+      </div>
+      <button class="play-btn green" data-i="${i}" onclick="playSingleSentence(${i})">
+        <svg class="flower-bg" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="pg" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#a8e6b0"/>
+              <stop offset="100%" stop-color="#5a9e6e"/>
+            </radialGradient>
+          </defs>
+          <ellipse cx="21" cy="9"  rx="7" ry="9"  fill="url(#pg)" transform="rotate(0   21 21)"/>
+          <ellipse cx="21" cy="9"  rx="7" ry="9"  fill="url(#pg)" transform="rotate(72  21 21)"/>
+          <ellipse cx="21" cy="9"  rx="7" ry="9"  fill="url(#pg)" transform="rotate(144 21 21)"/>
+          <ellipse cx="21" cy="9"  rx="7" ry="9"  fill="url(#pg)" transform="rotate(216 21 21)"/>
+          <ellipse cx="21" cy="9"  rx="7" ry="9"  fill="url(#pg)" transform="rotate(288 21 21)"/>
+          <circle cx="21" cy="21" r="7" fill="#fff" opacity="0.9"/>
+        </svg>
+        <span class="play-tri"></span>
+      </button>`;
+    if(isPlaying){
+      const btn=row.querySelector('.play-btn');
+      if(btn) btn.classList.add('spinning');
+    }
+    sentenceListEl.appendChild(row);
+  });
+}
+
+function playSingleSentence(i){
+  if(synth.speaking) synth.cancel();
+  currentlyPlayingIndex=i; currentlyPlayingScenario=null;
+
+  // 移除所有旋轉與情境高亮（直接操作 DOM）
+  document.querySelectorAll('.play-btn.spinning').forEach(b=>b.classList.remove('spinning'));
+
+  // 重渲染句子列表（更新高亮行）
+  renderSentences();
+
+  // 找到這顆按鈕並加旋轉
+  const btn = document.querySelector(`.play-btn[data-i="${i}"]`);
+  if(btn) btn.classList.add('spinning');
+
+  speak(isEnglish?dailySentences[i].en:dailySentences[i].zh, ()=>{
+    document.querySelectorAll('.play-btn.spinning').forEach(b=>b.classList.remove('spinning'));
+    currentlyPlayingIndex=-1;
+    renderSentences();
+  });
+}
+
+/* ════════════════════════════════════════
+   SCENARIOS
+════════════════════════════════════════ */
+function renderScenarios(){
+  scenarioListEl.innerHTML='';
+  scenariosData.forEach((cat,ci)=>{
+    const wrap=document.createElement('div'); wrap.style.marginBottom='16px';
+
+    // 標題：中文 + 英譯
+    const titleEl=document.createElement('div'); titleEl.className='scenario-title';
+    titleEl.innerHTML=`${cat.title} <span class="scenario-title-en">${cat.titleEn}</span>`;
+    wrap.appendChild(titleEl);
+
+    cat.sentences.forEach((s,si)=>{
+      const isP=currentlyPlayingScenario&&currentlyPlayingScenario.ci===ci&&currentlyPlayingScenario.si===si;
+      const row=document.createElement('div'); row.className='sentence-row'+(isP?' playing':'');
+      row.innerHTML=`
+        <span class="sentence-num">•</span>
+        <div class="sentence-text">
+          <p class="sentence-main">${s.en}</p>
+          ${!isEnglish ? `<p class="sentence-zh">${s.zh}</p>` : ''}
+          <p class="sentence-phonetic${showPhonetics?' visible':''}">${isEnglish?s.ipa:s.pinyin}</p>
+        </div>
+        <button class="play-btn blue" data-ci="${ci}" data-si="${si}" onclick="playScenarioSentence(${ci},${si})">
+          <svg class="flower-bg" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="pb" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#f9c8dc"/>
+                <stop offset="100%" stop-color="#e06090"/>
+              </radialGradient>
+            </defs>
+            <ellipse cx="21" cy="9"  rx="7" ry="9"  fill="url(#pb)" transform="rotate(0   21 21)"/>
+            <ellipse cx="21" cy="9"  rx="7" ry="9"  fill="url(#pb)" transform="rotate(72  21 21)"/>
+            <ellipse cx="21" cy="9"  rx="7" ry="9"  fill="url(#pb)" transform="rotate(144 21 21)"/>
+            <ellipse cx="21" cy="9"  rx="7" ry="9"  fill="url(#pb)" transform="rotate(216 21 21)"/>
+            <ellipse cx="21" cy="9"  rx="7" ry="9"  fill="url(#pb)" transform="rotate(288 21 21)"/>
+            <circle cx="21" cy="21" r="7" fill="#fff" opacity="0.9"/>
+          </svg>
+          <span class="play-tri"></span>
+        </button>`;
+      if(isP){
+        const btn=row.querySelector('.play-btn');
+        if(btn) btn.classList.add('spinning');
+      }
+      wrap.appendChild(row);
+    });
+    scenarioListEl.appendChild(wrap);
+  });
+}
+
+function playScenarioSentence(ci,si){
+  if(synth.speaking) synth.cancel();
+  currentlyPlayingScenario={ci,si}; currentlyPlayingIndex=-1;
+
+  // 移除所有旋轉（直接操作 DOM，不重渲染）
+  document.querySelectorAll('.play-btn.spinning').forEach(b=>b.classList.remove('spinning'));
+
+  // 移除句子列表高亮
+  document.querySelectorAll('.sentence-row.playing').forEach(r=>r.classList.remove('playing'));
+
+  // 找到對應按鈕加旋轉
+  const btn = document.querySelector(`.play-btn[data-ci="${ci}"][data-si="${si}"]`);
+  if(btn) btn.classList.add('spinning');
+
+  speak(isEnglish?scenariosData[ci].sentences[si].en:scenariosData[ci].sentences[si].zh, ()=>{
+    // 播放完畢：只移除旋轉，完全不重渲染
+    document.querySelectorAll('.play-btn.spinning').forEach(b=>b.classList.remove('spinning'));
+    currentlyPlayingScenario=null;
+  });
+}
+
+/* ════════════════════════════════════════
+   PLAY ALL
+════════════════════════════════════════ */
+const PLAY_ICON='<svg width="15" height="15" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/></svg><span>播放全文</span>';
+const STOP_ICON='<svg width="15" height="15" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"/></svg><span>停止播放</span>';
+
+playAllBtn.addEventListener('click',()=>{
+  if(isPlayingAll||synth.speaking){
+    synth.cancel(); isPlayingAll=false; currentlyPlayingIndex=-1;
+    document.querySelectorAll('.play-btn.spinning').forEach(b=>b.classList.remove('spinning'));
+    document.querySelectorAll('.sentence-row.playing').forEach(r=>r.classList.remove('playing'));
+    playAllBtn.innerHTML=PLAY_ICON; return;
+  }
+  isPlayingAll=true; playAllBtn.innerHTML=STOP_ICON;
+  let idx=0;
+  (function next(){
+    if(!isPlayingAll||idx>=dailySentences.length){
+      isPlayingAll=false; currentlyPlayingIndex=-1;
+      document.querySelectorAll('.play-btn.spinning').forEach(b=>b.classList.remove('spinning'));
+      document.querySelectorAll('.sentence-row.playing').forEach(r=>r.classList.remove('playing'));
+      playAllBtn.innerHTML=PLAY_ICON; return;
+    }
+    // 移除上一句的旋轉與高亮
+    document.querySelectorAll('.play-btn.spinning').forEach(b=>b.classList.remove('spinning'));
+    document.querySelectorAll('.sentence-row.playing').forEach(r=>r.classList.remove('playing'));
+
+    // 加上這一句的高亮與旋轉
+    currentlyPlayingIndex=idx;
+    const row = $('sentence-'+idx);
+    if(row){
+      row.classList.add('playing');
+      row.scrollIntoView({behavior:'smooth',block:'nearest'});
+      const btn = row.querySelector('.play-btn');
+      if(btn) btn.classList.add('spinning');
+    }
+
+    speak(isEnglish?dailySentences[idx].en:dailySentences[idx].zh, ()=>{
+      idx++; setTimeout(next, 600);
+    });
+  })();
+});
+
+/* ════════════════════════════════════════
+   CONTROLS
+════════════════════════════════════════ */
+langToggleBtn.addEventListener('click',()=>{
+  isEnglish=!isEnglish;
+  langLabel.textContent=isEnglish?'切換中文':'隱藏中文';
+  if(synth.speaking)synth.cancel(); filterVoices(); renderSentences(); renderScenarios();
+});
+
+phoneticToggleBtn.addEventListener('click',()=>{
+  showPhonetics=!showPhonetics; phoneticLabel.textContent=showPhonetics?'隱藏音標':'顯示音標';
+  renderSentences(); renderScenarios();
+});
+
+regenerateBtn.addEventListener('click',()=>{
+  seedOffset+=1; if(synth.speaking)synth.cancel(); isPlayingAll=false; currentlyPlayingIndex=-1;
+  playAllBtn.innerHTML=PLAY_ICON;
+  generateDailySentences(); renderSentences();
+  showToast('已為您重新挑選 10 句靜心語錄 ✨');
+});
+
+regenScenarioBtn.addEventListener('click',()=>{
+  scenarioSeedOffset+=1; if(synth.speaking)synth.cancel(); currentlyPlayingScenario=null;
+  generateScenarios(); renderScenarios();
+  showToast('已為您重新挑選情境對話句子 🎀');
+});
+
+/* ════════════════════════════════════════
+   TRACKER
+════════════════════════════════════════ */
+let checkedInDays=new Set(), trackerStartDate='';
+
+function loadTrackerData(){
+  const sd=localStorage.getItem('felt_start_date');
+  trackerStartDate=sd||getTodayString();
+  if(!sd)localStorage.setItem('felt_start_date',trackerStartDate);
+  startDatePicker.value=trackerStartDate;
+  const sc=localStorage.getItem('felt_checkins');
+  checkedInDays=sc?new Set(JSON.parse(sc)):new Set();
+}
+function saveTrackerData(){localStorage.setItem('felt_start_date',trackerStartDate);localStorage.setItem('felt_checkins',JSON.stringify([...checkedInDays]));}
+
+function initTracker(){
+  checkinContainer.innerHTML='';
+  const td=getDaysDiff(trackerStartDate,getTodayString());
+  for(let i=0;i<365;i++){
+    const d=document.createElement('div'); d.classList.add('dot'); d.dataset.dayIndex=i;
+    if(checkedInDays.has(i))d.classList.add('done');
+    if(i===td){d.classList.add('today');setTimeout(()=>d.scrollIntoView({behavior:'smooth',block:'nearest'}),100);}
+    checkinContainer.appendChild(d);
+  }
+  updateStreak(); checkTodayBtn();
+}
+function updateStreak(){streakCount.textContent=`已打卡: ${checkedInDays.size} 天`;}
+function checkTodayBtn(){
+  const d=getDaysDiff(trackerStartDate,getTodayString());
+  if(d>=0&&d<365&&checkedInDays.has(d)){
+    checkinBtn.innerHTML='✨ 今日已打卡 ✨'; checkinBtn.classList.add('done');
+  } else {
+    checkinBtn.innerHTML='<svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> 完成今日練習';
+    checkinBtn.classList.remove('done');
+  }
+}
+
+checkinBtn.addEventListener('click',()=>{
+  const d=getDaysDiff(trackerStartDate,getTodayString());
+  if(d<0||d>=365){showToast('今天不在打卡區間內喔！');return;}
+  if(checkedInDays.has(d)){showToast('今天已經打卡過囉！你很棒！');return;}
+  const dot=document.querySelector(`.dot[data-day-index="${d}"]`);
+  if(dot){dot.classList.add('done');dot.animate([{transform:'scale(1)'},{transform:'scale(1.6)'},{transform:'scale(1.25)'}],{duration:420,easing:'ease-out'});}
+  checkedInDays.add(d); saveTrackerData(); updateStreak(); checkTodayBtn();
+  showToast('今日練習完成！太棒了！🌸');
+});
+
+startDatePicker.addEventListener('change',e=>{trackerStartDate=e.target.value;saveTrackerData();initTracker();showToast('已更新起始日期！');});
+resetTrackerBtn.addEventListener('click',()=>{
+  if(confirm('確定要清除所有打卡紀錄並重新開始嗎？')){
+    checkedInDays.clear(); trackerStartDate=getTodayString();
+    startDatePicker.value=trackerStartDate; saveTrackerData(); initTracker();
+    showToast('已為您重新開始打卡計畫！');
+  }
+});
+
+/* ════════════════════════════════════════
+   INIT
+════════════════════════════════════════ */
+loadTrackerData();
+generateDailySentences();
+generateScenarios();
+renderSentences();
+renderScenarios();
+initTracker();
+setTimeout(()=>{if(!voices.length)populateVoices();},800);
+</script>
+</body>
+</html>
