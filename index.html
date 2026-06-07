@@ -265,24 +265,74 @@ select {
 }
 .sentence-phonetic.visible { display: block; }
 
+/* 中文翻譯（雙語模式時顯示在英文下方） */
+.sentence-zh {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text2);
+  margin-top: 4px;
+  padding-left: 2px;
+  border-left: 3px solid var(--pink);
+  padding-left: 8px;
+  line-height: 1.6;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+/* 情境標題英譯 */
+.scenario-title-en {
+  font-size: 0.82em;
+  font-weight: 400;
+  opacity: 0.72;
+  margin-left: 6px;
+  font-family: 'Fredoka', sans-serif;
+  letter-spacing: 0.02em;
+}
+
 /* ════════════════════════════════════════
-   PLAY BUTTON
+   PLAY BUTTON — 🌸 花朵造型
 ════════════════════════════════════════ */
 .play-btn {
-  width: 38px; height: 38px;
+  width: 42px; height: 42px;
   border-radius: 50%;
   border: none;
   cursor: pointer;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
-  transition: all 0.15s ease;
-  box-shadow: 0 3px 0 rgba(0,0,0,0.15), 0 4px 10px rgba(0,0,0,0.08);
+  transition: transform 0.15s ease;
+  background: transparent;
+  position: relative;
+  padding: 0;
 }
-.play-btn:hover { transform: scale(1.1); filter: brightness(1.08); }
-.play-btn:active { transform: scale(0.94) translateY(2px); box-shadow: 0 1px 0 rgba(0,0,0,0.12); }
-.play-btn.green { background: var(--green); color: #fff; box-shadow: 0 3px 0 var(--green-dk), 0 4px 10px rgba(0,0,0,0.08); }
-.play-btn.blue  { background: var(--blue); color: #fff; box-shadow: 0 3px 0 var(--blue-dk), 0 4px 10px rgba(0,0,0,0.08); }
-.play-btn svg   { fill: #fff; }
+.play-btn:hover { transform: scale(1.15) rotate(10deg); }
+.play-btn:active { transform: scale(0.92) rotate(-5deg); }
+
+/* 播放中：花朵持續旋轉 */
+@keyframes flower-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.play-btn.spinning .flower-bg {
+  animation: flower-spin 2s linear infinite;
+  transform-origin: center;
+}
+.play-btn.spinning:hover { transform: scale(1.1); }
+
+/* 花朵背景用 SVG，三角形播放符號疊在上面 */
+.play-btn .flower-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+}
+.play-btn .play-tri {
+  position: relative;
+  z-index: 2;
+  width: 0; height: 0;
+  border-style: solid;
+  border-width: 6px 0 6px 11px;
+  margin-left: 2px;
+}
+.play-btn.green .play-tri { border-color: transparent transparent transparent #5a9e6e; }
+.play-btn.blue  .play-tri { border-color: transparent transparent transparent #c04878; }
 
 /* ════════════════════════════════════════
    SCENARIO TITLE TAG
@@ -734,7 +784,7 @@ const mindfulnessPool = [
 
 // ── 八大情境完整語料庫（每個情境多句可輪換）──
 const scenariosPool = [
-  {title:"1. 自我介紹", sentences:[
+  {title:"1. 自我介紹", titleEn:"Self-Introduction", sentences:[
     {en:"Hello, my name is Alex, and it's a pleasure to meet you.",zh:"你好，我的名字是 Alex，很高興認識你。",ipa:"/həˈloʊ, maɪ neɪm ɪz ˈælɪks, ænd ɪts ə ˈplɛʒər tu mit ju/",pinyin:"nǐ hǎo, wǒ de míng zì shì Alex, hěn gāo xìng rèn shì nǐ."},
     {en:"I come from Taiwan, and I love exploring new ideas.",zh:"我來自台灣，而且我喜歡探索新想法。",ipa:"/aɪ kʌm frʌm taɪˈwɑn, ænd aɪ lʌv ɪkˈsplɔrɪŋ nu aɪˈdiəz/",pinyin:"wǒ lái zì táng wān, ér qiě wǒ xǐ huān tàn suǒ xīn xiǎng fǎ."},
     {en:"I'm 35 years old and currently working in the tech industry.",zh:"我今年 35 歲，目前在科技業工作。",ipa:"/aɪm ˈθɜrti faɪv jɪrz oʊld ænd ˈkɜrəntli ˈwɜrkɪŋ ɪn ðə tɛk ˈɪndəstri/",pinyin:"wǒ jīn nián 35 suì, mù qián zài kē jì yè gōng zuò."},
@@ -742,7 +792,7 @@ const scenariosPool = [
     {en:"I'm a lifelong learner who loves a good challenge.",zh:"我是一個熱愛挑戰的終身學習者。",ipa:"/aɪm ə ˈlaɪflɔŋ ˈlɜrnər hu lʌvz ə ɡʊd ˈtʃælɪndʒ/",pinyin:"wǒ shì yī gè rè ài tiǎo zhàn de zhōng shēn xué xí zhě."},
     {en:"Nice to meet everyone here today.",zh:"很高興今天在這裡認識大家。",ipa:"/naɪs tu mit ˈɛvriˌwʌn hɪr təˈdeɪ/",pinyin:"hěn gāo xìng jīn tiān zài zhè lǐ rèn shì dà jiā."}
   ]},
-  {title:"2. 為什麼學英文？", sentences:[
+  {title:"2. 為什麼學英文？", titleEn:"Why Learn English?", sentences:[
     {en:"I am learning English to communicate with people around the world.",zh:"我正在學習英文，以便與世界各地的人溝通。",ipa:"/aɪ æm ˈlɜrnɪŋ ˈɪŋɡlɪʃ tu kəˈmjunɪˌkeɪt wɪð ˈpipəl əˈraʊnd ðə wɜrld/",pinyin:"wǒ zhèng zài xué xí yīng wén, yǐ biàn yǔ shì jiè gè dì de rén gōu tōng."},
     {en:"English opens up new doors and opportunities for my future.",zh:"英文為我的未來打開了新的大門與機會。",ipa:"/ˈɪŋɡlɪʃ ˈoʊpənz ʌp nu dɔrz ænd ˌɑpərˈtunɪtiz fɔr maɪ ˈfjutʃər/",pinyin:"yīng wén wèi wǒ de wèi lái dǎ kāi le xīn de dà mén yǔ jī huì."},
     {en:"I want to be able to read technical articles in English fluently.",zh:"我希望能流利地閱讀英文技術文章。",ipa:"/aɪ wɑnt tu bi ˈeɪbəl tu rid ˈtɛknɪkəl ˈɑrtɪkəlz ɪn ˈɪŋɡlɪʃ ˈfluəntli/",pinyin:"wǒ xī wàng néng liú lì de yuè dú yīng wén jì shù wén zhāng."},
@@ -750,7 +800,7 @@ const scenariosPool = [
     {en:"English is the language of technology and I need it every day.",zh:"英文是科技的語言，我每天都需要用到它。",ipa:"/ˈɪŋɡlɪʃ ɪz ðə ˈlæŋɡwɪdʒ ʌv tɛkˈnɑlədʒi ænd aɪ nid ɪt ˈɛvri deɪ/",pinyin:"yīng wén shì kē jì de yǔ yán, wǒ měi tiān dōu xū yào yòng dào tā."},
     {en:"I want to travel and connect with people everywhere.",zh:"我想旅行，和世界各地的人建立連結。",ipa:"/aɪ wɑnt tu ˈtrævəl ænd kəˈnɛkt wɪð ˈpipəl ˈɛvriˌwɛr/",pinyin:"wǒ xiǎng lǚ xíng, hé shì jiè gè dì de rén jiàn lì lián jié."}
   ]},
-  {title:"3. 人際關係", sentences:[
+  {title:"3. 人際關係", titleEn:"Relationships", sentences:[
     {en:"Building strong relationships requires time, patience, and good listening.",zh:"建立良好的人際關係需要時間、耐心和良好的傾聽。",ipa:"/ˈbɪldɪŋ strɔŋ rɪˈleɪʃənˌʃɪps rɪˈkwaɪərz taɪm, ˈpeɪʃəns, ænd ɡʊd ˈlɪsənɪŋ/",pinyin:"jiàn lì liáng hǎo de rén jì guān xì xū yào shí jiān, nài xīn hé liáng hǎo de qīng tīng."},
     {en:"I appreciate friends who support me and help me grow.",zh:"我很感激那些支持我並幫助我成長的朋友。",ipa:"/aɪ əˈpriʃiˌeɪt frɛndz hu səˈpɔrt mi ænd hɛlp mi ɡroʊ/",pinyin:"wǒ hěn gǎn jī nà xiē zhī chí wǒ bìng bāng zhù wǒ chéng zhǎng de péng yǒu."},
     {en:"Communication is the foundation of every healthy relationship.",zh:"溝通是每段健康關係的基礎。",ipa:"/kəˌmjunɪˈkeɪʃən ɪz ðə faʊnˈdeɪʃən ʌv ˈɛvri ˈhɛlθi rɪˈleɪʃənˌʃɪp/",pinyin:"gōu tōng shì měi duàn jiàn kāng guān xì de jī chǔ."},
@@ -758,7 +808,7 @@ const scenariosPool = [
     {en:"True friendship grows through honesty and trust.",zh:"真正的友誼在誠實和信任中成長。",ipa:"/tru ˈfrɛndʃɪp ɡroʊz θru ˈɑnɪsti ænd trʌst/",pinyin:"zhēn zhèng de yǒu yì zài chéng shí hé xìn rèn zhōng chéng zhǎng."},
     {en:"Showing up for others makes all the difference.",zh:"為他人出現，往往能帶來很大的不同。",ipa:"/ˈʃoʊɪŋ ʌp fɔr ˈʌðərz meɪks ɔl ðə ˈdɪfərəns/",pinyin:"wèi tā rén chū xiàn, wǎng wǎng néng dài lái hěn dà de bù tóng."}
   ]},
-  {title:"4. 旅遊", sentences:[
+  {title:"4. 旅遊", titleEn:"Travel", sentences:[
     {en:"Traveling allows me to experience different cultures and perspectives.",zh:"旅行讓我能夠體驗不同的文化和視角。",ipa:"/ˈtrævəlɪŋ əˈlaʊz mi tu ɪkˈspɪriəns ˈdɪfərənt ˈkʌltʃərz ænd pərˈspɛktɪvz/",pinyin:"lǚ xíng ràng wǒ néng gòu tǐ yàn bù tóng de wén huà hé shì jiǎo."},
     {en:"I can't wait to pack my bags and explore an unknown city.",zh:"我等不及打包行李，去探索一座未知的城市了。",ipa:"/aɪ kænt weɪt tu pæk maɪ bæɡz ænd ɪkˈsplɔr ən ənˈnoʊn ˈsɪti/",pinyin:"wǒ děng bù jí dǎ bāo xíng lǐ, qù tàn suǒ yī zuò wèi zhī de chéng shì le."},
     {en:"Every trip teaches me something new about the world and myself.",zh:"每一次旅行都讓我對世界和自己有新的認識。",ipa:"/ˈɛvri trɪp ˈtitʃɪz mi ˈsʌmθɪŋ nu əˈbaʊt ðə wɜrld ænd maɪˈsɛlf/",pinyin:"měi yī cì lǚ xíng dōu ràng wǒ duì shì jiè hé zì jǐ yǒu xīn de rèn shí."},
@@ -766,7 +816,7 @@ const scenariosPool = [
     {en:"Excuse me, how do I get to the train station from here?",zh:"請問，我要怎麼從這裡去火車站？",ipa:"/ɪkˈskjuz mi, haʊ du aɪ ɡɛt tu ðə treɪn ˈsteɪʃən frʌm hɪr/",pinyin:"qǐng wèn, wǒ yào zěn me cóng zhè lǐ qù huǒ chē zhàn?"},
     {en:"I'd like to check in, please. I have a reservation under my name.",zh:"我想辦理入住，我有用我的名字預訂。",ipa:"/aɪd laɪk tu tʃɛk ɪn, pliz. aɪ hæv ə ˌrɛzərˈveɪʃən ˈʌndər maɪ neɪm/",pinyin:"wǒ xiǎng bàn lǐ rù zhù, wǒ yǒu yòng wǒ de míng zì yù dìng."}
   ]},
-  {title:"5. 興趣", sentences:[
+  {title:"5. 興趣", titleEn:"Hobbies & Interests", sentences:[
     {en:"In my free time, I enjoy reading books and listening to music.",zh:"在空閒時間，我喜歡看書和聽音樂。",ipa:"/ɪn maɪ fri taɪm, aɪ ɪnˈdʒɔɪ ˈridɪŋ bʊks ænd ˈlɪsənɪŋ tu ˈmjuzɪk/",pinyin:"zài kòng xián shí jiān, wǒ xǐ huān kàn shū hé tīng yīn yuè."},
     {en:"Finding a hobby you love is the best way to relieve stress.",zh:"找到一個你熱愛的興趣是紓解壓力的最佳方法。",ipa:"/ˈfaɪndɪŋ ə ˈhɑbi ju lʌv ɪz ðə bɛst weɪ tu rɪˈliv strɛs/",pinyin:"zhǎo dào yī gè nǐ rè ài de xìng qù shì shū jiě yā lì de zuì jiā fāng fǎ."},
     {en:"I recently got into hiking and now I go every weekend.",zh:"我最近愛上了健行，現在每個週末都去。",ipa:"/aɪ ˈrisəntli ɡɑt ˈɪntu ˈhaɪkɪŋ ænd naʊ aɪ ɡoʊ ˈɛvri ˈwikˌɛnd/",pinyin:"wǒ zuì jìn ài shàng le jiàn xíng, xiàn zài měi gè zhōu mò dōu qù."},
@@ -774,7 +824,7 @@ const scenariosPool = [
     {en:"I love photography. Capturing a moment makes it last forever.",zh:"我熱愛攝影，捕捉一個瞬間讓它永遠留存。",ipa:"/aɪ lʌv fəˈtɑɡrəfi. ˈkæptʃərɪŋ ə ˈmoʊmənt meɪks ɪt læst fərˈɛvər/",pinyin:"wǒ rè ài shè yǐng, bǔ zhuō yī gè shùn jiān ràng tā yǒng yuǎn liú cún."},
     {en:"Cooking relaxes me and lets me be creative at the same time.",zh:"烹飪讓我放鬆，同時也讓我發揮創意。",ipa:"/ˈkʊkɪŋ rɪˈlæksɪz mi ænd lɛts mi bi kriˈeɪtɪv æt ðə seɪm taɪm/",pinyin:"pēng rèn ràng wǒ fàng sōng, tóng shí yě ràng wǒ fā huī chuàng yì."}
   ]},
-  {title:"6. 工作", sentences:[
+  {title:"6. 工作", titleEn:"Work & Career", sentences:[
     {en:"I take pride in my work and always try my best to solve problems.",zh:"我為我的工作感到自豪，並總是盡力解決問題。",ipa:"/aɪ teɪk praɪd ɪn maɪ wɜrk ænd ˈɔlˌweɪz traɪ maɪ bɛst tu sɑlv ˈprɑbləmz/",pinyin:"wǒ wèi wǒ de gōng zuò gǎn dào zì háo, bìng zǒng shì jìn lì jiě jué wèn tí."},
     {en:"Teamwork is essential for achieving our professional goals.",zh:"團隊合作對於實現我們的職業目標至關重要。",ipa:"/ˈtimˌwɜrk ɪz ɪˈsɛnʃəl fɔr əˈtʃivɪŋ ˈaʊər prəˈfɛʃənəl ɡoʊlz/",pinyin:"tuán duì hé zuò duì yú shí xiàn wǒ men de zhí yè mù biāo zhì guān zhòng yào."},
     {en:"Could we schedule a meeting to discuss this further?",zh:"我們可以安排一個會議來進一步討論嗎？",ipa:"/kʊd wi ˈskɛdʒul ə ˈmitɪŋ tu dɪˈskʌs ðɪs ˈfɜrðər/",pinyin:"wǒ men kě yǐ ān pái yī gè huì yì lái jìn yī bù tǎo lùn ma?"},
@@ -782,7 +832,7 @@ const scenariosPool = [
     {en:"I believe continuous learning is the key to long-term success.",zh:"我相信持續學習是長期成功的關鍵。",ipa:"/aɪ bɪˈliv kənˈtɪnjuəs ˈlɜrnɪŋ ɪz ðə ki tu lɔŋ tɜrm səkˈsɛs/",pinyin:"wǒ xiāng xìn chí xù xué xí shì cháng qī chéng gōng de guān jiàn."},
     {en:"Please let me know if you have any questions or concerns.",zh:"如有任何疑問或顧慮，請告訴我。",ipa:"/pliz lɛt mi noʊ ɪf ju hæv ˈɛni ˈkwɛstʃənz ɔr kənˈsɜrnz/",pinyin:"rú yǒu rèn hé yí wèn huò gù lǜ, qǐng gào sù wǒ."}
   ]},
-  {title:"7. 夢想成為頂尖程式語言工程師", sentences:[
+  {title:"7. 夢想成為頂尖程式語言工程師", titleEn:"Dream: Top Software Engineer", sentences:[
     {en:"My ultimate dream is to become a top-tier software engineer.",zh:"我最終的夢想是成為一名頂尖的軟體工程師。",ipa:"/maɪ ˈʌltəmət drim ɪz tu bɪˈkʌm ə tɑp-tɪr ˈsɔfˌtwɛr ˈɛndʒəˈnɪr/",pinyin:"wǒ zuì zhōng de mèng xiǎng shì chéng wèi yī míng dǐng jiān de ruǎn tǐ gōng chéng shī."},
     {en:"Writing clean and efficient code brings me a lot of joy.",zh:"編寫乾淨且高效的程式碼給我帶來很多快樂。",ipa:"/ˈraɪtɪŋ klin ænd ɪˈfɪʃənt koʊd brɪŋz mi ə lɑt ʌv dʒɔɪ/",pinyin:"biān xiě gān jìng qiě gāo xiào de chéng shì mǎ gěi wǒ dài lái hěn duō kuài lè."},
     {en:"I practice coding every day to sharpen my skills.",zh:"我每天練習程式設計，以磨練我的技能。",ipa:"/aɪ ˈpræktɪs ˈkoʊdɪŋ ˈɛvri deɪ tu ˈʃɑrpən maɪ skɪlz/",pinyin:"wǒ měi tiān liàn xí chéng shì shè jì, yǐ mó liàn wǒ de jì néng."},
@@ -790,7 +840,7 @@ const scenariosPool = [
     {en:"Open source contribution is my way of giving back to the community.",zh:"貢獻開源是我回饋社群的方式。",ipa:"/ˈoʊpən sɔrs ˌkɑntrɪˈbjuʃən ɪz maɪ weɪ ʌv ˈɡɪvɪŋ bæk tu ðə kəˈmjunɪti/",pinyin:"gòng xiàn kāi yuán shì wǒ huí kuì shè qún de fāng shì."},
     {en:"The best engineers never stop being curious.",zh:"最優秀的工程師從不停止保持好奇心。",ipa:"/ðə bɛst ˌɛndʒɪˈnɪrz ˈnɛvər stɑp ˈbiɪŋ ˈkjʊriəs/",pinyin:"zuì yōu xiù de gōng chéng shī cóng bù tíng zhǐ bǎo chí hào qí xīn."}
   ]},
-  {title:"8. 生活作息", sentences:[
+  {title:"8. 生活作息", titleEn:"Daily Routine", sentences:[
     {en:"I start my day with a cup of coffee and a clear plan.",zh:"我以一杯咖啡和清晰的計畫開始我的一天。",ipa:"/aɪ stɑrt maɪ deɪ wɪð ə kʌp ʌv ˈkɑfi ænd ə klɪr plæn/",pinyin:"wǒ yǐ yī bēi kā fēi hé qīng xī de jì huà kāi shǐ wǒ de yī tiān."},
     {en:"Maintaining a balanced daily routine keeps me healthy and focused.",zh:"保持平衡的日常作息讓我保持健康和專注。",ipa:"/meɪnˈteɪnɪŋ ə ˈbælənst ˈdeɪli ruˈtin kips mi ˈhɛlθi ænd ˈfoʊkəst/",pinyin:"bǎo chí píng héng de rì cháng zuò xí ràng wǒ bǎo chí jiàn kāng hé zhuān zhù."},
     {en:"I try to go to bed before midnight to get enough sleep.",zh:"我盡量在午夜前就寢，以獲得足夠的睡眠。",ipa:"/aɪ traɪ tu ɡoʊ tu bɛd bɪˈfɔr ˈmɪdˌnaɪt tu ɡɛt ɪˈnʌf slip/",pinyin:"wǒ jǐn liàng zài wǔ yè qián jiù qǐn, yǐ huò dé zú gòu de shuì mián."},
@@ -938,34 +988,68 @@ function generateScenarios(){
     if(!scenarioHistory[ci]) scenarioHistory[ci] = [];
     const seed = new Date().getFullYear()*10000 + getDayOfYear()*8 + ci*100 + scenarioSeedOffset*13;
     const picked = pickUnique(cat.sentences, scenarioHistory[ci], 2, seed);
-    return { title: cat.title, sentences: picked };
+    return { title: cat.title, titleEn: cat.titleEn, sentences: picked };
   });
 }
 
 function renderSentences(){
   sentenceListEl.innerHTML='';
   dailySentences.forEach((s,i)=>{
-    const main=isEnglish?s.en:s.zh, phon=isEnglish?s.ipa:s.pinyin;
+    const isPlaying = i===currentlyPlayingIndex;
     const row=document.createElement('div');
-    row.className='sentence-row'+(i===currentlyPlayingIndex?' playing':'');
+    row.className='sentence-row'+(isPlaying?' playing':'');
     row.id='sentence-'+i;
     row.innerHTML=`
       <span class="sentence-num">${i+1}.</span>
       <div class="sentence-text">
-        <p class="sentence-main">${main}</p>
-        <p class="sentence-phonetic${showPhonetics?' visible':''}">${phon}</p>
+        <p class="sentence-main">${s.en}</p>
+        ${!isEnglish ? `<p class="sentence-zh">${s.zh}</p>` : ''}
+        <p class="sentence-phonetic${showPhonetics?' visible':''}">${isEnglish?s.ipa:s.pinyin}</p>
       </div>
-      <button class="play-btn green" onclick="playSingleSentence(${i})">
-        <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/></svg>
+      <button class="play-btn green" data-i="${i}" onclick="playSingleSentence(${i})">
+        <svg class="flower-bg" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="pg" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#a8e6b0"/>
+              <stop offset="100%" stop-color="#5a9e6e"/>
+            </radialGradient>
+          </defs>
+          <ellipse cx="21" cy="9"  rx="7" ry="9"  fill="url(#pg)" transform="rotate(0   21 21)"/>
+          <ellipse cx="21" cy="9"  rx="7" ry="9"  fill="url(#pg)" transform="rotate(72  21 21)"/>
+          <ellipse cx="21" cy="9"  rx="7" ry="9"  fill="url(#pg)" transform="rotate(144 21 21)"/>
+          <ellipse cx="21" cy="9"  rx="7" ry="9"  fill="url(#pg)" transform="rotate(216 21 21)"/>
+          <ellipse cx="21" cy="9"  rx="7" ry="9"  fill="url(#pg)" transform="rotate(288 21 21)"/>
+          <circle cx="21" cy="21" r="7" fill="#fff" opacity="0.9"/>
+        </svg>
+        <span class="play-tri"></span>
       </button>`;
+    if(isPlaying){
+      const btn=row.querySelector('.play-btn');
+      if(btn) btn.classList.add('spinning');
+    }
     sentenceListEl.appendChild(row);
   });
 }
 
 function playSingleSentence(i){
+  if(synth.speaking) synth.cancel();
   currentlyPlayingIndex=i; currentlyPlayingScenario=null;
-  renderSentences(); renderScenarios();
-  speak(isEnglish?dailySentences[i].en:dailySentences[i].zh,()=>{currentlyPlayingIndex=-1;renderSentences();});
+
+  // 移除所有旋轉與情境高亮（直接操作 DOM）
+  document.querySelectorAll('.play-btn.spinning').forEach(b=>b.classList.remove('spinning'));
+
+  // 重渲染句子列表（更新高亮行）
+  renderSentences();
+
+  // 找到這顆按鈕並加旋轉
+  const btn = document.querySelector(`.play-btn[data-i="${i}"]`);
+  if(btn) btn.classList.add('spinning');
+
+  speak(isEnglish?dailySentences[i].en:dailySentences[i].zh, ()=>{
+    document.querySelectorAll('.play-btn.spinning').forEach(b=>b.classList.remove('spinning'));
+    currentlyPlayingIndex=-1;
+    renderSentences();
+  });
 }
 
 /* ════════════════════════════════════════
@@ -975,21 +1059,43 @@ function renderScenarios(){
   scenarioListEl.innerHTML='';
   scenariosData.forEach((cat,ci)=>{
     const wrap=document.createElement('div'); wrap.style.marginBottom='16px';
-    const title=document.createElement('div'); title.className='scenario-title'; title.textContent=cat.title;
-    wrap.appendChild(title);
+
+    // 標題：中文 + 英譯
+    const titleEl=document.createElement('div'); titleEl.className='scenario-title';
+    titleEl.innerHTML=`${cat.title} <span class="scenario-title-en">${cat.titleEn}</span>`;
+    wrap.appendChild(titleEl);
+
     cat.sentences.forEach((s,si)=>{
-      const main=isEnglish?s.en:s.zh, phon=isEnglish?s.ipa:s.pinyin;
       const isP=currentlyPlayingScenario&&currentlyPlayingScenario.ci===ci&&currentlyPlayingScenario.si===si;
       const row=document.createElement('div'); row.className='sentence-row'+(isP?' playing':'');
       row.innerHTML=`
         <span class="sentence-num">•</span>
         <div class="sentence-text">
-          <p class="sentence-main">${main}</p>
-          <p class="sentence-phonetic${showPhonetics?' visible':''}">${phon}</p>
+          <p class="sentence-main">${s.en}</p>
+          ${!isEnglish ? `<p class="sentence-zh">${s.zh}</p>` : ''}
+          <p class="sentence-phonetic${showPhonetics?' visible':''}">${isEnglish?s.ipa:s.pinyin}</p>
         </div>
-        <button class="play-btn blue" onclick="playScenarioSentence(${ci},${si})">
-          <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/></svg>
+        <button class="play-btn blue" data-ci="${ci}" data-si="${si}" onclick="playScenarioSentence(${ci},${si})">
+          <svg class="flower-bg" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="pb" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#f9c8dc"/>
+                <stop offset="100%" stop-color="#e06090"/>
+              </radialGradient>
+            </defs>
+            <ellipse cx="21" cy="9"  rx="7" ry="9"  fill="url(#pb)" transform="rotate(0   21 21)"/>
+            <ellipse cx="21" cy="9"  rx="7" ry="9"  fill="url(#pb)" transform="rotate(72  21 21)"/>
+            <ellipse cx="21" cy="9"  rx="7" ry="9"  fill="url(#pb)" transform="rotate(144 21 21)"/>
+            <ellipse cx="21" cy="9"  rx="7" ry="9"  fill="url(#pb)" transform="rotate(216 21 21)"/>
+            <ellipse cx="21" cy="9"  rx="7" ry="9"  fill="url(#pb)" transform="rotate(288 21 21)"/>
+            <circle cx="21" cy="21" r="7" fill="#fff" opacity="0.9"/>
+          </svg>
+          <span class="play-tri"></span>
         </button>`;
+      if(isP){
+        const btn=row.querySelector('.play-btn');
+        if(btn) btn.classList.add('spinning');
+      }
       wrap.appendChild(row);
     });
     scenarioListEl.appendChild(wrap);
@@ -997,9 +1103,24 @@ function renderScenarios(){
 }
 
 function playScenarioSentence(ci,si){
+  if(synth.speaking) synth.cancel();
   currentlyPlayingScenario={ci,si}; currentlyPlayingIndex=-1;
-  renderSentences(); renderScenarios();
-  speak(isEnglish?scenariosData[ci].sentences[si].en:scenariosData[ci].sentences[si].zh,()=>{currentlyPlayingScenario=null;renderScenarios();});
+
+  // 移除所有旋轉（直接操作 DOM，不重渲染）
+  document.querySelectorAll('.play-btn.spinning').forEach(b=>b.classList.remove('spinning'));
+
+  // 移除句子列表高亮
+  document.querySelectorAll('.sentence-row.playing').forEach(r=>r.classList.remove('playing'));
+
+  // 找到對應按鈕加旋轉
+  const btn = document.querySelector(`.play-btn[data-ci="${ci}"][data-si="${si}"]`);
+  if(btn) btn.classList.add('spinning');
+
+  speak(isEnglish?scenariosData[ci].sentences[si].en:scenariosData[ci].sentences[si].zh, ()=>{
+    // 播放完畢：只移除旋轉，完全不重渲染
+    document.querySelectorAll('.play-btn.spinning').forEach(b=>b.classList.remove('spinning'));
+    currentlyPlayingScenario=null;
+  });
 }
 
 /* ════════════════════════════════════════
@@ -1011,18 +1132,36 @@ const STOP_ICON='<svg width="15" height="15" fill="currentColor" viewBox="0 0 20
 playAllBtn.addEventListener('click',()=>{
   if(isPlayingAll||synth.speaking){
     synth.cancel(); isPlayingAll=false; currentlyPlayingIndex=-1;
-    renderSentences(); playAllBtn.innerHTML=PLAY_ICON; return;
+    document.querySelectorAll('.play-btn.spinning').forEach(b=>b.classList.remove('spinning'));
+    document.querySelectorAll('.sentence-row.playing').forEach(r=>r.classList.remove('playing'));
+    playAllBtn.innerHTML=PLAY_ICON; return;
   }
   isPlayingAll=true; playAllBtn.innerHTML=STOP_ICON;
   let idx=0;
   (function next(){
     if(!isPlayingAll||idx>=dailySentences.length){
       isPlayingAll=false; currentlyPlayingIndex=-1;
-      renderSentences(); playAllBtn.innerHTML=PLAY_ICON; return;
+      document.querySelectorAll('.play-btn.spinning').forEach(b=>b.classList.remove('spinning'));
+      document.querySelectorAll('.sentence-row.playing').forEach(r=>r.classList.remove('playing'));
+      playAllBtn.innerHTML=PLAY_ICON; return;
     }
-    currentlyPlayingIndex=idx; renderSentences();
-    $('sentence-'+idx)?.scrollIntoView({behavior:'smooth',block:'nearest'});
-    speak(isEnglish?dailySentences[idx].en:dailySentences[idx].zh,()=>{idx++;setTimeout(next,600);});
+    // 移除上一句的旋轉與高亮
+    document.querySelectorAll('.play-btn.spinning').forEach(b=>b.classList.remove('spinning'));
+    document.querySelectorAll('.sentence-row.playing').forEach(r=>r.classList.remove('playing'));
+
+    // 加上這一句的高亮與旋轉
+    currentlyPlayingIndex=idx;
+    const row = $('sentence-'+idx);
+    if(row){
+      row.classList.add('playing');
+      row.scrollIntoView({behavior:'smooth',block:'nearest'});
+      const btn = row.querySelector('.play-btn');
+      if(btn) btn.classList.add('spinning');
+    }
+
+    speak(isEnglish?dailySentences[idx].en:dailySentences[idx].zh, ()=>{
+      idx++; setTimeout(next, 600);
+    });
   })();
 });
 
@@ -1030,7 +1169,8 @@ playAllBtn.addEventListener('click',()=>{
    CONTROLS
 ════════════════════════════════════════ */
 langToggleBtn.addEventListener('click',()=>{
-  isEnglish=!isEnglish; langLabel.textContent=isEnglish?'切換中文':'切換英文';
+  isEnglish=!isEnglish;
+  langLabel.textContent=isEnglish?'切換中文':'隱藏中文';
   if(synth.speaking)synth.cancel(); filterVoices(); renderSentences(); renderScenarios();
 });
 
