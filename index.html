@@ -1213,7 +1213,7 @@ function initTracker(){
   for(let i=0;i<365;i++){
     const d=document.createElement('div'); d.classList.add('dot'); d.dataset.dayIndex=i;
     if(checkedInDays.has(i))d.classList.add('done');
-    if(i===td){d.classList.add('today');setTimeout(()=>d.scrollIntoView({behavior:'smooth',block:'nearest'}),100);}
+    if(i===td){d.classList.add('today');}
     checkinContainer.appendChild(d);
   }
   updateStreak(); checkTodayBtn();
